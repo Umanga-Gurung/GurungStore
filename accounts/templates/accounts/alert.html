@@ -1,0 +1,19 @@
+{% if messages %}
+<div id="message" class="my-3">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show d-flex align-items-center justify-content-between shadow-sm border-0 rounded-3 mb-2" role="alert">
+        <div>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR or message.tags == 'danger' %}
+                <i class="ci-close-circle me-2 text-danger"></i><strong>Important: </strong>
+            {% elif message.tags == 'success' %}
+                <i class="ci-check-circle me-2 text-success"></i>
+            {% else %}
+                <i class="ci-announcement me-2"></i>
+            {% endif %}
+            {{ message }}
+        </div>
+        <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

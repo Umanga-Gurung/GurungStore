@@ -1,0 +1,13 @@
+{% autoescape off %}
+Hi {{ user.first_name }},
+
+Thank you for registering with GurungStore!
+
+Please click the link below to verify your email address and activate your account:
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+If you did not create an account on GurungStore, please ignore this email.
+
+Best regards,
+GurungStore Team
+{% endautoescape %}

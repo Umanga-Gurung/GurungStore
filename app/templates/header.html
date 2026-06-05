@@ -1,0 +1,100 @@
+{% load static %}
+
+{% if '/orders/delivery/' in request.path or request.user.is_authenticated and request.user.is_delivery_person and not request.user.is_admin %}
+<header class="bg-light shadow-sm fixed-top" data-fixed-element>
+    <div class="navbar navbar-expand-lg navbar-light py-2">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a class="navbar-brand me-2 d-flex align-items-center" href="{% url 'delivery_dashboard' %}">
+                <h3 class="mb-0">GurungStore</h3>
+                <span class="badge bg-primary rounded-pill ms-2"><i class="ci-delivery me-1"></i>Delivery Portal</span>
+            </a>
+            <div class="d-flex align-items-center">
+                {% if request.user.is_authenticated and request.user.is_delivery_person %}
+                <span class="text-muted me-3 d-none d-md-inline">
+                    <i class="ci-user me-1"></i>Hello, {{ request.user.full_name|default:request.user.email }}
+                </span>
+                <a href="{% url 'delivery_dashboard' %}" class="btn btn-sm btn-outline-primary rounded-pill me-2">
+                    <i class="ci-view-list me-1"></i>Active Dashboard
+                </a>
+                <a href="{% url 'delivery_history' %}" class="btn btn-sm btn-outline-secondary rounded-pill me-2">
+                    <i class="ci-time me-1"></i>History Log
+                </a>
+                <a href="{% url 'delivery_profile' %}" class="btn btn-sm btn-outline-info rounded-pill me-3">
+                    <i class="ci-user me-1"></i>My Profile
+                </a>
+                <a class="btn btn-sm btn-danger rounded-pill" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-sm btn-outline-secondary rounded-pill">
+                    <i class="ci-user me-1"></i>Customer Login
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+{% else %}
+<header class="bg-light shadow-sm fixed-top" data-fixed-element>
+    <div class="navbar navbar-expand-lg navbar-light py-1">
+        <div class="container-fluid">
+
+            <a class="navbar-brand me-2" href="{% url 'home' %}">
+                <h3>GurungStore</h3>
+            </a>
+
+            <form class="input-group d-none d-lg-flex flex-nowrap mx-4 search" action="{% url 'store' %}" style="width:60%;">
+                <button type="submit" class="btn p-0 position-absolute top-50 start-0 translate-middle-y ms-3" style="border: none; background: transparent; z-index: 5;">
+                    <i class="ci-search"></i>
+                </button>
+                <input name="q" class="form-control rounded-start w-100 ps-5" type="text" placeholder="Search for products" value="{{request.GET.q|default:''}}">
+                <select name="category" class="form-select flex-shrink-0" style="width: 14rem;">
+                    <option value="">All Category</option>
+                    {% for i in links %}
+                    <option value="{{i.category_name}}" {% if request.GET.category == i.category_name %}selected{% endif %}>{{i.category_name}}</option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center ms-xl-2">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-tool d-flex d-lg-none" href="#searchBox" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="searchBox">
+                    <span class="navbar-tool-tooltip">Search</span>
+                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
+                </a>
+
+                {% if user.is_authenticated %}
+                <div class="navbar-tool me-3">
+                    <a class="navbar-tool-icon-box bg-secondary" href="{% url 'cart' %}">
+                        <span class="navbar-tool-label">{{cart_count}}</span>
+                        <i class="navbar-tool-icon ci-cart"></i>
+                    </a>
+                </div>
+
+                <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{% url 'dashbord' %}">
+                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                    <div class="navbar-tool-text ms-n3"><small>Hello, {{request.user.full_name|default:request.user.email}}!</small>Go to Dashboard</div>
+                </a>
+
+                {% if request.user.is_delivery_person %}
+                <a class="btn btn-sm btn-outline-primary rounded-1 ms-lg-3 ms-2" href="{% url 'delivery_dashboard' %}">
+                    <i class="ci-delivery me-1"></i>Delivery Portal
+                </a>
+                {% endif %}
+
+                <a class="btn btn-sm btn-danger rounded-1 ms-lg-4 ms-2" href="{% url 'logout' %}">Logout</a>
+
+                {% else %}
+
+                <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{% url 'login' %}">
+                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                    <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div>
+                </a>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</header>
+{% endif %}

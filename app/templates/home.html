@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<main class="offcanvas-enabled" style="padding-top: 5rem;">
+    <section class="ps-lg-4 pe-lg-3 pt-4">
+
+        <div class="px-3 pt-2">
+
+            <div>
+                <div class="rounded-3 px-md-5 text-center text-xl-start" style="background-color: #59c879;">
+                    <div class="d-xl-flex justify-content-between align-items-center px-4 px-sm-5 mx-auto"
+                        style="max-width: 1226px;">
+                        <div class="py-5 me-xl-4 mx-auto mx-xl-0" style="max-width: 490px;">
+                            <h2 class="h1 text-light">Gurung Store a Click Away</h2>
+                            <p class="text-light pb-4">Order any goods from our store online and we deliver them to your
+                                door at
+                                a time convenient for you.</p>
+                            <div class="d-flex flex-wrap justify-content-center justify-content-xl-start pt-2">
+                                <a class="btn btn-light btn-shadow rounded-pill me-3 mb-2 px-4" href="{% url 'store' %}">
+                                    <i class="ci-cart me-2"></i>Shop Now
+                                </a>
+                                <a class="btn btn-outline-light rounded-pill mb-2 px-4" href="{% url 'store' %}">
+                                    Explore Categories
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="{% static 'img/grocery/slider/slide01.jpg' %}" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How it works-->
+            <section class="pt-4 mb-4 mb-md-5">
+                <h2 class="h3 text-center mb-grid-gutter pt-2">How it works?</h2>
+                <div class="row g-0 bg-light rounded-3">
+                    <div class="col-xl-4 col-lg-12 col-md-4 border-end">
+                        <div class="py-3">
+                            <div class="d-flex align-items-center mx-auto py-3 px-3" style="max-width: 362px;">
+                                <div class="display-3 fw-normal opacity-15 me-4">01</div>
+                                <div class="ps-2"><img class="d-block my-2"
+                                        src="{% static 'img/grocery/steps/01.png' %}" width="72" alt="Order online">
+                                    <p class="mb-3 pt-1">You order your favorite products online</p>
+                                </div>
+                            </div>
+                            <hr class="d-md-none d-lg-block d-xl-none">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12 col-md-4 border-end">
+                        <div class="py-3">
+                            <div class="d-flex align-items-center mx-auto py-3 px-3" style="max-width: 362px;">
+                                <div class="display-3 fw-normal opacity-15 me-4">02</div>
+                                <div class="ps-2"><img class="d-block my-2"
+                                        src="{% static 'img/grocery/steps/02.png' %}" width="72"
+                                        alt="Grocery collected">
+                                    <p class="mb-3 pt-1">We collects the products from your list</p>
+                                </div>
+                            </div>
+                            <hr class="d-md-none d-lg-block d-xl-none">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12 col-md-4">
+                        <div class="py-3">
+                            <div class="d-flex align-items-center mx-auto py-3 px-3" style="max-width: 362px;">
+                                <div class="display-3 fw-normal opacity-15 me-4">03</div>
+                                <div class="ps-2"><img class="d-block my-2"
+                                        src="{% static 'img/grocery/steps/03.png' %}" width="72" alt="Delivery">
+                                    <p class="mb-3 pt-1">We deliver to the door at a time convenient for you</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="pt-5 pb-4">
+                <!-- Heading-->
+                <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
+                    <h2 class="h3 mb-0 pt-3 me-3">Popular Products</h2>
+                    <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="{%url 'store'%}">More products<i
+                                class="ci-arrow-right ms-1 me-n1"></i></a></div>
+                </div>
+
+
+
+                <div class="row g-4">
+                    {% for product in products %}
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
+
+                        <div class="card product-card card-static mb-4 w-100 d-flex flex-column shadow-sm border-0 rounded-3">
+
+                            <a class="card-img-top d-block overflow-hidden position-relative" href="{%url 'product-detail' product.id%}" style="height: 240px; background: #f8fafc;">
+                                {% if product.stock == 0 %}
+                                <span class="badge bg-danger position-absolute top-0 start-0 m-2 z-index-2">Out of Stock</span>
+                                {% elif product.is_low_stock %}
+                                <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2 z-index-2">Low Stock ({{ product.stock }})</span>
+                                {% endif %}
+                                <img src="{{product.image.url}}" alt="{{product.product_name}}" style="width: 100%; height: 100%; object-fit: contain; padding: 0.5rem;">
+                            </a>
+
+                            <div class="card-body py-3 d-flex flex-column flex-grow-1">
+                                <a class="product-meta d-block fs-xs pb-1 text-muted" href="#">{{product.category}}</a>
+
+                                <h3 class="product-title fs-sm mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.4rem; line-height: 1.2rem;">
+                                    <a href="{%url 'product-detail' product.id%}">{{product.product_name}}</a>
+                                </h3>
+
+                                <div class="product-price mt-auto pt-2 d-flex justify-content-between align-items-center">
+                                    <span class="text-accent fw-bold fs-md">Rs. {{product.price}}</span>
+                                    {% if product.stock > 0 %}
+                                    <small class="text-muted" style="font-size: 0.75rem;">{{ product.stock }} in stock</small>
+                                    {% endif %}
+                                </div>
+
+                            </div>
+
+                            <div class="product-floating-btn">
+                                {% if product.stock > 0 %}
+                                <a href="{% url 'add-cart' product.id %}" class="btn btn-primary btn-shadow btn-sm">+<i
+                                    class="ci-cart fs-base ms-1"></i></a>
+                                {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled title="Out of stock">
+                                    <i class="ci-close-circle fs-base"></i>
+                                </button>
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+
+
+
+
+                        {% comment %} <span>
+
+                            <i class="fa fa-star{%if product.avarageReview < 0.5%}-o{%elif product.avarageReview >= 0.5 and product.avarageReview < 1 %}-half-o{%endif%}"
+                                aria-hidden="true"></i>
+                            <i class="fa fa-star{%if product.avarageReview < 1.5%}-o{%elif product.avarageReview >= 1.5 and product.avarageReview < 2 %}-half-o{%endif%}"
+                                aria-hidden="true"></i>
+                            <i class="fa fa-star{%if product.avarageReview < 2.5%}-o{%elif product.avarageReview >= 2.5 and product.avarageReview < 3 %}-half-o{%endif%}"
+                                aria-hidden="true"></i>
+                            <i class="fa fa-star{%if product.avarageReview < 3.5%}-o{%elif product.avarageReview >= 3.5 and product.avarageReview < 4 %}-half-o{%endif%}"
+                                aria-hidden="true"></i>
+                            <i class="fa fa-star{%if product.avarageReview < 4.5%}-o{%elif product.avarageReview >= 4.5 and product.avarageReview < 5 %}-half-o{%endif%}"
+                                aria-hidden="true"></i>
+
+                        </span> {% endcomment %}
+
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+
+
+
+            </section>
+
+            <div class="pb-3"></div>
+        </div>
+
+    </section>
+</main>
+
+
+{% endblock content %}
