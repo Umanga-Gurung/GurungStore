@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block   content %}
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 75vh; padding-top: 5rem;">
+        <div class="text-center card shadow p-5 border-0 rounded-3 bg-white" style="max-width: 500px; width: 100%;">
+            <div class="mb-4">
+                <i class="fas fa-check-circle" style="font-size: 80px; color: #28A745;"></i>
+            </div>
+            <h2 class="h3 mb-3 text-dark">Payment Successful!</h2>
+            <p class="text-muted mb-4">Thank you for your order. Your transaction has been processed and completed successfully.</p>
+            <div class="d-flex flex-column gap-2">
+                <a href="{% url 'store' %}" class="btn btn-success rounded-pill py-2 px-4 mb-2">
+                    Continue Shopping
+                </a>
+                <a href="{% url 'dashbord' %}" class="btn btn-outline-secondary rounded-pill py-2 px-4">
+                    Go to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

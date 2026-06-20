@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #myform {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 style="text-align: center">
+      You will be redirected to the Esewa Website..
+    </h3>
+    <form action="{{ esewa_payment_url }}" method="POST" id="myform">
+      <input value="{{ esewa_amount }}" name="amount" type="hidden" />
+      <input value="{{ esewa_tax_amount }}" name="tax_amount" type="hidden" />
+      <input
+        value="{{ esewa_service_charge }}"
+        name="product_service_charge"
+        type="hidden"
+      />
+      <input
+        value="{{ esewa_delivery_charge }}"
+        name="product_delivery_charge"
+        type="hidden"
+      />
+      <input
+        value="{{ esewa_total_amount }}"
+        name="total_amount"
+        type="hidden"
+      />
+      <input
+        value="{{ esewa_transaction_uuid }}"
+        name="transaction_uuid"
+        type="hidden"
+      />
+      <input
+        value="{{ esewa_product_code }}"
+        name="product_code"
+        type="hidden"
+      />
+      <input value="{{ esewa_success_url }}" type="hidden" name="success_url" />
+      <input value="{{ esewa_failure_url }}" type="hidden" name="failure_url" />
+      <input
+        value="{{ esewa_signed_field_names }}"
+        type="hidden"
+        name="signed_field_names"
+      />
+      <input value="{{ esewa_signature }}" type="hidden" name="signature" />
+      <input value="Submit" type="submit" />
+    </form>
+    <script>
+      setTimeout(function () {
+        document.getElementById("myform").submit();
+      }, 100);
+    </script>
+  </body>
+</html>
