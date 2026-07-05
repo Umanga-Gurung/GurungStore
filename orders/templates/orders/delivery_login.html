@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main style="padding-top: 5rem;">
+    <section class="py-5" style="min-height: 80vh;">
+        <div class="container d-flex flex-column align-items-center">
+            <div class="card shadow border-0 rounded-3 p-4" style="max-width: 420px; width: 100%;">
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-3" style="width:64px; height:64px;">
+                        <i class="ci-delivery" style="font-size: 32px;"></i>
+                    </div>
+                    <h3 class="h4 mb-1">Delivery Partner Sign In</h3>
+                    <p class="text-muted fs-sm">Log in to access your Delivery Dashboard</p>
+                </div>
+
+                {% include "accounts/alert.html" %}
+
+                <form action="{% url 'delivery_login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control form-control-lg" placeholder="your.email@domain.com" name="email" required autofocus>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control form-control-lg" placeholder="Enter your password" name="password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary rounded-pill w-100 py-2 fs-md mb-3">
+                        <i class="ci-sign-in me-2"></i>Sign In to Delivery Portal
+                    </button>
+                </form>
+
+                <div class="text-center border-top pt-3 mt-2">
+                    <p class="fs-sm text-muted mb-0"><i class="ci-security-check me-1 text-primary"></i>Delivery accounts are created by the Store Administrator.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <small class="text-muted">Are you a customer? <a href="{% url 'login' %}" class="text-decoration-none">Customer Login</a></small>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

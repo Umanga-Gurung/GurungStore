@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main style="padding-top: 5rem;">
+    <section class="py-4">
+        <div class="container" style="max-width: 700px;">
+            <!-- Back Link -->
+            <a href="{% url 'delivery_dashboard' %}" class="btn btn-outline-secondary btn-sm rounded-pill mb-4">
+                <i class="ci-arrow-left me-1"></i>Back to Dashboard
+            </a>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <!-- Order Header -->
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h4 class="mb-1">Order #{{order.order_number}}</h4>
+                            <small class="text-muted">Placed on {{order.created_at}}</small>
+                        </div>
+                        <div>
+                            {% if order.delivery_status == 'Assigned' %}
+                                <span class="badge bg-primary rounded-pill px-3 py-2">Assigned</span>
+                            {% elif order.delivery_status == 'Out for Delivery' %}
+                                <span class="badge bg-warning text-dark rounded-pill px-3 py-2">Out for Delivery</span>
+                            {% elif order.delivery_status == 'OTP Sent' %}
+                                <span class="badge bg-info text-dark rounded-pill px-3 py-2">OTP Sent</span>
+                            {% elif order.delivery_status == 'Completed' %}
+                                <span class="badge bg-success rounded-pill px-3 py-2">Delivered</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Customer Info -->
+                    <h6 class="text-muted mb-3">Customer Details</h6>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-2">
+                            <strong><i class="ci-user me-1"></i>Name:</strong>
+                            <p class="mb-0">{{order.full_name}}</p>
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <strong><i class="ci-phone me-1"></i>Phone:</strong>
+                            <p class="mb-0">
+                                <a href="tel:{{order.phone_number}}" class="text-decoration-none">{{order.phone_number}}</a>
+                            </p>
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <strong><i class="ci-mail me-1"></i>Email:</strong>
+                            <p class="mb-0">{{order.email}}</p>
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <strong><i class="ci-location me-1"></i>Address:</strong>
+                            <p class="mb-0">{{order.full_address}}, {{order.city}}</p>
+                        </div>
+                    </div>
+
+                    {% if order.order_note %}
+                    <div class="alert alert-light border mb-3">
+                        <strong>Order Note:</strong> {{order.order_note}}
+                    </div>
+                    {% endif %}
+
+                    <!-- Google Maps Navigation -->
+                    <a href="https://www.google.com/maps/search/?api=1&query={{order.address_line_1}}+{{order.city}}"
+                       target="_blank" class="btn btn-outline-primary btn-sm rounded-pill mb-4">
+                        <i class="ci-location me-1"></i>Open in Google Maps
+                    </a>
+
+                    <hr>
+
+                    <!-- Package Contents -->
+                    <h6 class="text-muted mb-3">Package Contents</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th class="text-center">Qty</th>
+                                    <th class="text-center">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order_items %}
+                                <tr>
+                                    <td>{{item.product.product_name}}</td>
+                                    <td class="text-center">{{item.quantity}}</td>
+                                    <td class="text-center">Rs. {{item.product_price}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="2" class="text-end">Subtotal:</th>
+                                    <th class="text-center">Rs. {{subtotal}}</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" class="text-end">Grand Total:</th>
+                                    <th class="text-center">Rs. {{order.order_total}}</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <hr>
+
+                    <!-- Delivery Timeline -->
+                    <h6 class="text-muted mb-3">Delivery Timeline</h6>
+                    <div class="d-flex justify-content-between text-center mb-4">
+                        <div>
+                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center bg-success text-white" style="width:36px;height:36px;">
+                                <i class="ci-check"></i>
+                            </div>
+                            <small class="d-block mt-1">Assigned</small>
+                        </div>
+                        <div>
+                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center {% if order.delivery_status == 'Out for Delivery' or order.delivery_status == 'OTP Sent' or order.delivery_status == 'Completed' %}bg-success text-white{% else %}bg-light text-muted{% endif %}" style="width:36px;height:36px;">
+                                <i class="ci-arrow-right"></i>
+                            </div>
+                            <small class="d-block mt-1">Out for Delivery</small>
+                        </div>
+                        <div>
+                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center {% if order.delivery_status == 'OTP Sent' or order.delivery_status == 'Completed' %}bg-success text-white{% else %}bg-light text-muted{% endif %}" style="width:36px;height:36px;">
+                                <i class="ci-mail"></i>
+                            </div>
+                            <small class="d-block mt-1">OTP Sent</small>
+                        </div>
+                        <div>
+                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center {% if order.delivery_status == 'Completed' %}bg-success text-white{% else %}bg-light text-muted{% endif %}" style="width:36px;height:36px;">
+                                <i class="ci-check"></i>
+                            </div>
+                            <small class="d-block mt-1">Completed</small>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center">
+                        {% if order.delivery_status == 'Assigned' %}
+                            <a href="{% url 'start_delivery' order.id %}" class="btn btn-warning rounded-pill px-4">
+                                <i class="ci-arrow-right me-1"></i>Start Delivery
+                            </a>
+                        {% elif order.delivery_status == 'Out for Delivery' %}
+                            <a href="{% url 'send_delivery_otp' order.id %}" class="btn btn-info rounded-pill px-4">
+                                <i class="ci-mail me-1"></i>Arrived & Send OTP
+                            </a>
+                        {% elif order.delivery_status == 'OTP Sent' %}
+                            <a href="{% url 'verify_delivery_otp' order.id %}" class="btn btn-success rounded-pill px-4">
+                                <i class="ci-check me-1"></i>Enter OTP
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

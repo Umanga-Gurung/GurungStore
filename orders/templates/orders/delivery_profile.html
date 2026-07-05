@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main style="padding-top: 5rem;">
+    <section class="py-4">
+        <div class="container" style="max-width: 800px;">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="h3 mb-0"><i class="ci-user me-2"></i>Delivery Profile Management</h2>
+                <a href="{% url 'delivery_dashboard' %}" class="btn btn-outline-secondary btn-sm rounded-pill">
+                    <i class="ci-arrow-left me-1"></i>Back to Dashboard
+                </a>
+            </div>
+
+            {% include "accounts/alert.html" %}
+
+            <div class="row g-4">
+                <!-- Profile Summary Card -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm text-center p-4">
+                        <div class="mb-3">
+                            {% if userprofile.profile_pic %}
+                                <img src="{{ userprofile.profile_pic.url }}" width="100" height="100" class="rounded-circle shadow-sm" style="object-fit: cover;" alt="Profile Avatar">
+                            {% else %}
+                                <img src="/media/default/default-user.png" width="100" height="100" class="rounded-circle shadow-sm" style="object-fit: cover;" alt="Default Avatar">
+                            {% endif %}
+                        </div>
+                        <h5 class="mb-1">{{ request.user.full_name|default:request.user.username }}</h5>
+                        <p class="text-muted fs-sm mb-2">{{ request.user.email }}</p>
+                        <span class="badge bg-primary rounded-pill mb-3">
+                            <i class="ci-delivery me-1"></i>Verified Delivery Partner
+                        </span>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-around text-center pt-2">
+                            <div>
+                                <div class="h4 mb-0 text-success">{{ completed_count }}</div>
+                                <small class="text-muted">Completed Deliveries</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Edit Form -->
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-sm p-4">
+                        <h5 class="mb-3">Edit Delivery Profile</h5>
+                        <form method="POST" action="{% url 'delivery_profile' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" name="first_name" class="form-control" value="{{ request.user.first_name }}" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control" value="{{ request.user.last_name }}" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control bg-light" value="{{ request.user.email }}" readonly disabled>
+                                <small class="text-muted">Email address cannot be modified.</small>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="text" name="phone_number" class="form-control" value="{{ request.user.phone_number|default:'' }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">City</label>
+                                    <input type="text" name="city" class="form-control" value="{{ userprofile.city|default:'' }}">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Profile Picture Avatar</label>
+                                <input type="file" name="profile_pic" class="form-control" accept="image/*">
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="{% url 'delivery_dashboard' %}" class="btn btn-outline-secondary rounded-pill px-4">Cancel</a>
+                                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                                    <i class="ci-check me-1"></i>Save Profile Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock content %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main style="padding-top: 5rem;">
+    <section class="py-4">
+        <div class="container d-flex flex-column align-items-center" style="min-height: 60vh;">
+            <div class="card shadow-sm border-0 p-4 text-center" style="max-width: 450px; width: 100%;">
+                <!-- OTP Icon -->
+                <div class="mb-3">
+                    <i class="ci-security-check" style="font-size: 64px; color: #0d6efd;"></i>
+                </div>
+
+                <h4 class="mb-2">Verify Delivery OTP</h4>
+                <p class="text-muted mb-1">Order #{{order.order_number}}</p>
+                <p class="text-muted mb-4">
+                    A 6-digit OTP has been sent to <strong>{{order.email}}</strong>.
+                    Ask the customer to share the code.
+                </p>
+
+                {% include "accounts/alert.html" %}
+
+                <form method="POST" action="{% url 'verify_delivery_otp' order.id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <input type="text" name="otp" class="form-control form-control-lg text-center"
+                               maxlength="6" placeholder="Enter 6-digit OTP"
+                               pattern="[0-9]{6}" inputmode="numeric"
+                               required autofocus
+                               style="letter-spacing: 0.5em; font-size: 1.5rem; font-weight: bold;">
+                    </div>
+                    <button type="submit" class="btn btn-success rounded-pill w-100 py-2 mb-3">
+                        <i class="ci-check me-1"></i>Verify & Complete Delivery
+                    </button>
+                </form>
+
+                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                    <a href="{% url 'send_delivery_otp' order.id %}" id="resendDeliveryOtpBtn" class="btn btn-outline-secondary btn-sm rounded-pill">
+                        <i class="ci-reload me-1"></i><span id="resendDeliveryText">Resend OTP</span>
+                    </a>
+                    <a href="{% url 'delivery_dashboard' %}" class="btn btn-outline-dark btn-sm rounded-pill">
+                        <i class="ci-arrow-left me-1"></i>Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let cooldownSeconds = parseInt("{{ cooldown_remaining|default:0 }}");
+        const resendBtn = document.getElementById('resendDeliveryOtpBtn');
+        const resendText = document.getElementById('resendDeliveryText');
+
+        if (cooldownSeconds > 0) {
+            resendBtn.classList.add('disabled');
+            resendBtn.style.pointerEvents = 'none';
+            resendBtn.classList.replace('btn-outline-secondary', 'btn-secondary');
+
+            const timerInterval = setInterval(function() {
+                const mins = Math.floor(cooldownSeconds / 60);
+                const secs = cooldownSeconds % 60;
+                const formattedSecs = secs < 10 ? '0' + secs : secs;
+                resendText.textContent = `Resend OTP (${mins}:${formattedSecs})`;
+
+                cooldownSeconds--;
+
+                if (cooldownSeconds < 0) {
+                    clearInterval(timerInterval);
+                    resendBtn.classList.remove('disabled');
+                    resendBtn.style.pointerEvents = 'auto';
+                    resendBtn.classList.replace('btn-secondary', 'btn-outline-secondary');
+                    resendText.textContent = 'Resend OTP';
+                }
+            }, 1000);
+        }
+    });
+</script>
+{% endblock content %}
