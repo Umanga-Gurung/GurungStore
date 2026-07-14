@@ -1,0 +1,388 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}Products & Stock{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-box-seam me-2"></i>Products & Inventory Management</h4>
+    <div>
+        <button class="btn btn-primary rounded-pill btn-sm" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            <i class="bi bi-plus-lg me-1"></i>Add New Product
+        </button>
+    </div>
+</div>
+
+<!-- Low Stock & Out of Stock Alerts Banner -->
+{% if low_stock_count > 0 or out_of_stock_count > 0 %}
+<div class="alert alert-warning border-0 shadow-sm rounded-3 d-flex align-items-center justify-content-between mb-4 py-2 px-3">
+    <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-exclamation-triangle-fill fs-5 text-warning"></i>
+        <div>
+            <strong>Inventory Alert:</strong>
+            {% if low_stock_count > 0 %}
+                <span class="badge bg-warning text-dark me-2">{{ low_stock_count }} Low Stock (< 5 left)</span>
+            {% endif %}
+            {% if out_of_stock_count > 0 %}
+                <span class="badge bg-danger me-2">{{ out_of_stock_count }} Out of Stock</span>
+            {% endif %}
+        </div>
+    </div>
+    <span class="small text-muted">Please restock or update stock quantities below.</span>
+</div>
+{% endif %}
+
+<form method="POST" action="{% url 'admin_bulk_stock_toggle' %}" id="bulkStockForm">
+    {% csrf_token %}
+    <input type="hidden" name="action" id="bulkActionInput" value="">
+
+    <div class="sa-card mb-4">
+        <!-- Toolbar & Bulk Action Controls -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 pb-2 border-bottom">
+            <div class="d-flex align-items-center gap-2">
+                <span class="text-muted" style="font-size:0.85rem;">Total Products: <strong>{{ products|length }}</strong></span>
+            </div>
+
+            <!-- Bulk Toggle Buttons -->
+            <div class="d-flex align-items-center gap-2">
+                <span class="small text-muted me-1">Bulk Stock Action:</span>
+                <button type="button" class="btn btn-sm btn-outline-success rounded-pill" onclick="triggerBulkAction('in_stock', 'mark as In Stock')">
+                    <i class="bi bi-check-circle me-1"></i>Mark In Stock
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" onclick="triggerBulkAction('out_of_stock', 'mark as Out of Stock')">
+                    <i class="bi bi-x-circle me-1"></i>Mark Out of Stock
+                </button>
+                <div class="input-group input-group-sm" style="width: 190px;">
+                    <input type="number" name="bulk_stock_value" min="0" value="10" class="form-control" placeholder="Qty">
+                    <button type="button" class="btn btn-outline-primary" onclick="triggerBulkAction('update_stock', 'set stock quantity')">
+                        Set Stock
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table sa-table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th style="width:40px;">
+                            <input type="checkbox" id="selectAllProducts" class="form-check-input" onclick="toggleSelectAll(this)">
+                        </th>
+                        <th style="width:60px;">Image</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock Level</th>
+                        <th>Created</th>
+                        <th style="width:120px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="product_ids" value="{{ product.id }}" class="form-check-input product-checkbox">
+                        </td>
+                        <td>
+                            {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.product_name }}" style="width:45px; height:45px; object-fit:cover; border-radius:8px;">
+                            {% else %}
+                            <div style="width:45px; height:45px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+                                <i class="bi bi-image text-muted"></i>
+                            </div>
+                            {% endif %}
+                        </td>
+                        <td class="fw-medium">{{ product.product_name }}</td>
+                        <td>{{ product.category.category_name }}</td>
+                        <td>Rs. {{ product.price }}</td>
+                        <td>
+                            {% if product.stock == 0 %}
+                            <span class="badge rounded-pill bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 px-2 py-1" style="font-size:0.8rem;">
+                                <i class="bi bi-x-circle-fill me-1"></i>Out of Stock (0)
+                            </span>
+                            {% elif product.is_low_stock %}
+                            <span class="badge rounded-pill bg-warning bg-opacity-10 text-dark border border-warning border-opacity-50 px-2 py-1" style="font-size:0.8rem;">
+                                <i class="bi bi-exclamation-triangle-fill me-1 text-warning"></i>Low Stock ({{ product.stock }} left)
+                            </span>
+                            {% else %}
+                            <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:0.8rem;">
+                                <i class="bi bi-check-circle-fill me-1"></i>In Stock ({{ product.stock }})
+                            </span>
+                            {% endif %}
+                        </td>
+                        <td style="font-size:0.8rem;">{{ product.created_date|date:"M d, Y" }}</td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <button type="button" class="btn btn-sm btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#editProductModal{{ product.id }}" title="Edit Product">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteProductModal{{ product.id }}" title="Delete Product">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Edit Product Modal -->
+                    <div class="modal fade" id="editProductModal{{ product.id }}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content rounded-3 border-0 shadow">
+                                <div class="modal-header border-bottom-0 pb-0">
+                                    <h5 class="modal-title fw-bold">
+                                        <i class="bi bi-pencil-square me-2 text-primary"></i>Edit Product
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="POST" action="{% url 'admin_edit_product' product.id %}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-body pt-3">
+                                        <div class="mb-3">
+                                            <label class="form-label fw-medium" style="font-size:0.85rem;">Product Name <span class="text-danger">*</span></label>
+                                            <input type="text" name="product_name" value="{{ product.product_name }}" class="form-control form-control-sm" required>
+                                        </div>
+
+                                        <div class="row g-2 mb-3">
+                                            <div class="col-4">
+                                                <label class="form-label fw-medium" style="font-size:0.85rem;">Category <span class="text-danger">*</span></label>
+                                                <select name="category" class="form-select form-select-sm" required>
+                                                    <option value="">-- Select Category --</option>
+                                                    {% for cat in categories %}
+                                                    <option value="{{ cat.id }}" {% if product.category == cat %}selected{% endif %}>{{ cat.category_name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="form-label fw-medium" style="font-size:0.85rem;">Price (Rs.) <span class="text-danger">*</span></label>
+                                                <input type="number" name="price" value="{{ product.price }}" min="1" class="form-control form-control-sm" required>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="form-label fw-medium" style="font-size:0.85rem;">Stock Qty <span class="text-danger">*</span></label>
+                                                <input type="number" name="stock" value="{{ product.stock }}" min="0" class="form-control form-control-sm" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label fw-medium" style="font-size:0.85rem;">Product Image (Optional to replace)</label>
+                                            <input type="file" name="image" class="form-control form-control-sm" accept="image/*" onchange="validateFileSize(this)">
+                                            <div class="form-text" style="font-size:0.75rem;">Max allowed size: <strong>500 KB</strong>. Leave blank to keep existing image.</div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label fw-medium" style="font-size:0.85rem;">Description</label>
+                                            <textarea name="description" class="form-control form-control-sm" rows="3">{{ product.description }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer border-top-0 pt-0">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">
+                                            <i class="bi bi-check-lg me-1"></i>Update Product
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Product Confirmation Modal -->
+                    <div class="modal fade" id="deleteProductModal{{ product.id }}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content rounded-3 border-0 shadow">
+                                <div class="modal-header border-bottom-0 pb-0">
+                                    <h5 class="modal-title fw-bold text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill me-2"></i>Delete Product
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body pt-3">
+                                    <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                                        Are you sure you want to delete product <strong>"{{ product.product_name }}"</strong>? This action cannot be undone.
+                                    </p>
+                                </div>
+                                <div class="modal-footer border-top-0 pt-0 mt-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                    <form method="POST" action="{% url 'admin_delete_product' product.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-danger rounded-pill px-4">
+                                            <i class="bi bi-trash me-1"></i>Delete Product
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <tr><td colspan="8" class="text-center text-muted py-4">No products found. Click "Add New Product" to create one.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold" id="addProductModalLabel">
+                    <i class="bi bi-plus-circle me-2 text-primary"></i>Add New Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{% url 'admin_add_product' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body pt-3">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Product Name <span class="text-danger">*</span></label>
+                        <input type="text" name="product_name" class="form-control form-control-sm" placeholder="e.g. Fresh Organic Apples" required>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-4">
+                            <label class="form-label fw-medium" style="font-size:0.85rem;">Category <span class="text-danger">*</span></label>
+                            <select name="category" class="form-select form-select-sm" required>
+                                <option value="">-- Select Category --</option>
+                                {% for cat in categories %}
+                                <option value="{{ cat.id }}">{{ cat.category_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label fw-medium" style="font-size:0.85rem;">Price (Rs.) <span class="text-danger">*</span></label>
+                            <input type="number" name="price" min="1" class="form-control form-control-sm" placeholder="e.g. 150" required>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label fw-medium" style="font-size:0.85rem;">Stock Qty <span class="text-danger">*</span></label>
+                            <input type="number" name="stock" min="0" value="10" class="form-control form-control-sm" placeholder="e.g. 10" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Product Image</label>
+                        <input type="file" name="image" class="form-control form-control-sm" accept="image/*" onchange="validateFileSize(this)">
+                        <div class="form-text" style="font-size:0.75rem;">Max allowed image size: <strong>500 KB</strong> (Formats: JPG, PNG, WEBP).</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Description</label>
+                        <textarea name="description" class="form-control form-control-sm" rows="3" placeholder="Brief product description..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">
+                        <i class="bi bi-check-lg me-1"></i>Save Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bulk Action Confirmation Modal -->
+<div class="modal fade" id="bulkStockConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold text-primary">
+                    <i class="bi bi-layers-fill me-2"></i>Confirm Bulk Stock Action
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-3">
+                <p class="mb-0 text-muted" style="font-size:0.95rem;" id="bulkModalMessage">
+                    Are you sure you want to perform this action?
+                </p>
+            </div>
+            <div class="modal-footer border-top-0 pt-0 mt-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-sm btn-primary rounded-pill px-4" onclick="submitBulkForm()">
+                    <i class="bi bi-check-circle-fill me-1"></i>Confirm & Apply
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- No Selection Warning Modal -->
+<div class="modal fade" id="noSelectionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold text-warning">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>No Products Selected
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-3">
+                <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                    Please select at least one product using the checkboxes before executing a bulk stock action.
+                </p>
+            </div>
+            <div class="modal-footer border-top-0 pt-0 mt-2">
+                <button type="button" class="btn btn-sm btn-primary rounded-pill px-4" data-bs-dismiss="modal">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- File Size Exceeded Warning Modal -->
+<div class="modal fade" id="fileSizeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold text-danger">
+                    <i class="bi bi-file-earmark-x-fill me-2"></i>Image Size Exceeded
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-3">
+                <p class="mb-0 text-muted" style="font-size:0.9rem;" id="fileSizeMessage">
+                    Selected image file size exceeds the 500 KB limit.
+                </p>
+            </div>
+            <div class="modal-footer border-top-0 pt-0 mt-2">
+                <button type="button" class="btn btn-sm btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function validateFileSize(input) {
+        const file = input.files[0];
+        if (file) {
+            const sizeKB = (file.size / 1024).toFixed(1);
+            if (file.size > 500 * 1024) {
+                document.getElementById('fileSizeMessage').innerHTML = `Selected image size (<strong>${sizeKB} KB</strong>) exceeds the maximum allowed limit of <strong>500 KB</strong>. Please choose a smaller image.`;
+                input.value = '';
+                const modal = new bootstrap.Modal(document.getElementById('fileSizeModal'));
+                modal.show();
+            }
+        }
+    }
+
+    function toggleSelectAll(master) {
+        const checkboxes = document.querySelectorAll('.product-checkbox');
+        checkboxes.forEach(cb => cb.checked = master.checked);
+    }
+
+    function triggerBulkAction(actionType, actionLabel) {
+        const checked = document.querySelectorAll('.product-checkbox:checked');
+        if (checked.length === 0) {
+            const noSelModal = new bootstrap.Modal(document.getElementById('noSelectionModal'));
+            noSelModal.show();
+            return;
+        }
+
+        document.getElementById('bulkActionInput').value = actionType;
+        document.getElementById('bulkModalMessage').innerHTML = `Are you sure you want to <strong>${actionLabel}</strong> for the <strong>${checked.length}</strong> selected product(s)?`;
+        const confirmModal = new bootstrap.Modal(document.getElementById('bulkStockConfirmModal'));
+        confirmModal.show();
+    }
+
+    function submitBulkForm() {
+        document.getElementById('bulkStockForm').submit();
+    }
+</script>
+{% endblock %}

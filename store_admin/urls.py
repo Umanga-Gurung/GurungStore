@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('login/', views.admin_login, name='admin_login'),
+    path('logout/', views.admin_logout, name='admin_logout'),
+    path('', views.admin_dashboard, name='admin_dashboard'),
+    path('orders/', views.admin_orders, name='admin_orders'),
+    path('orders/<int:order_id>/', views.admin_order_detail, name='admin_order_detail'),
+    path('orders/assign/<int:order_id>/', views.assign_delivery, name='assign_delivery'),
+    path('products/', views.admin_products, name='admin_products'),
+    path('products/add/', views.admin_add_product, name='admin_add_product'),
+    path('products/edit/<int:product_id>/', views.admin_edit_product, name='admin_edit_product'),
+    path('products/delete/<int:product_id>/', views.admin_delete_product, name='admin_delete_product'),
+    path('products/bulk-stock/', views.admin_bulk_stock_toggle, name='admin_bulk_stock_toggle'),
+    path('categories/', views.admin_categories, name='admin_categories'),
+    path('categories/add/', views.admin_add_category, name='admin_add_category'),
+    path('categories/edit/<int:category_id>/', views.admin_edit_category, name='admin_edit_category'),
+    path('categories/delete/<int:category_id>/', views.admin_delete_category, name='admin_delete_category'),
+    path('delivery-team/', views.admin_delivery_team, name='admin_delivery_team'),
+    path('delivery-team/add/', views.admin_add_delivery_agent, name='admin_add_delivery_agent'),
+    path('users/', views.admin_users, name='admin_users'),
+    path('users/toggle-active/<int:user_id>/', views.toggle_user_active, name='toggle_user_active'),
+    path('users/toggle-delivery/<int:user_id>/', views.toggle_user_delivery, name='toggle_user_delivery'),
+    path('users/delete/<int:user_id>/', views.admin_delete_user, name='admin_delete_user'),
+    path('transactions/', views.admin_transactions, name='admin_transactions'),
+    path('reviews/', views.admin_reviews, name='admin_reviews'),
+    path('reviews/toggle-status/<int:review_id>/', views.toggle_review_status, name='toggle_review_status'),
+    path('reviews/delete/<int:review_id>/', views.admin_delete_review, name='admin_delete_review'),
+]

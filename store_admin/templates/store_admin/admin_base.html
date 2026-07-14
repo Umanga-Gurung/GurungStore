@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Store Admin{% endblock %} | GurungStore</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sa-primary: #4f46e5;
+            --sa-primary-hover: #4338ca;
+            --sa-sidebar-bg: #1e1b4b;
+            --sa-sidebar-text: #c7d2fe;
+            --sa-sidebar-active: #818cf8;
+            --sa-bg: #f1f5f9;
+            --sa-card-bg: #ffffff;
+        }
+
+        * { font-family: 'Inter', sans-serif; }
+
+        body { background-color: var(--sa-bg); margin: 0; }
+
+        /* ── Sidebar ── */
+        .sa-sidebar {
+            width: 260px;
+            min-height: 100vh;
+            background: var(--sa-sidebar-bg);
+            position: fixed;
+            top: 0; left: 0;
+            z-index: 1040;
+            padding-top: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .sa-sidebar .brand {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sa-sidebar .brand small {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--sa-sidebar-text);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .sa-sidebar .nav-link {
+            color: var(--sa-sidebar-text);
+            padding: 0.65rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .sa-sidebar .nav-link:hover,
+        .sa-sidebar .nav-link.active {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+            border-left-color: var(--sa-sidebar-active);
+        }
+        .sa-sidebar .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        /* ── Main Content ── */
+        .sa-main {
+            margin-left: 260px;
+            padding: 1.5rem 2rem;
+            min-height: 100vh;
+        }
+
+        /* ── Top Bar ── */
+        .sa-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .sa-topbar h4 { margin: 0; font-weight: 700; color: #1e293b; }
+
+        /* ── KPI Cards ── */
+        .sa-kpi {
+            background: var(--sa-card-bg);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sa-kpi:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .sa-kpi .kpi-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem;
+        }
+        .sa-kpi .kpi-value { font-size: 1.5rem; font-weight: 700; color: #1e293b; }
+        .sa-kpi .kpi-label { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+
+        /* ── Cards ── */
+        .sa-card {
+            background: var(--sa-card-bg);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            padding: 1.25rem;
+        }
+        .sa-card .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Tables ── */
+        .sa-table { font-size: 0.875rem; }
+        .sa-table thead th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .sa-table td { vertical-align: middle; color: #334155; }
+
+        /* ── Status Badges ── */
+        .badge-new { background: #dbeafe; color: #1d4ed8; }
+        .badge-accepted { background: #fef3c7; color: #92400e; }
+        .badge-completed { background: #d1fae5; color: #065f46; }
+        .badge-cancelled { background: #fee2e2; color: #991b1b; }
+        .badge-pending { background: #f1f5f9; color: #475569; }
+        .badge-assigned { background: #e0e7ff; color: #3730a3; }
+        .badge-out { background: #fef3c7; color: #92400e; }
+        .badge-otp { background: #dbeafe; color: #1e40af; }
+
+        /* ── Responsive ── */
+        @media (max-width: 991.98px) {
+            .sa-sidebar { transform: translateX(-100%); }
+            .sa-sidebar.show { transform: translateX(0); }
+            .sa-main { margin-left: 0; padding: 1rem; }
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sa-sidebar" id="saSidebar">
+    <div class="brand">
+        <i class="bi bi-shop"></i> GurungStore
+        <small>Admin Portal</small>
+    </div>
+    <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_dashboard' %}active{% endif %}" href="{% url 'admin_dashboard' %}">
+                <i class="bi bi-grid-1x2-fill"></i> Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_orders' %}active{% endif %}" href="{% url 'admin_orders' %}">
+                <i class="bi bi-receipt"></i> Orders & Dispatch
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_products' %}active{% endif %}" href="{% url 'admin_products' %}">
+                <i class="bi bi-box-seam"></i> Products & Stock
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_categories' %}active{% endif %}" href="{% url 'admin_categories' %}">
+                <i class="bi bi-tags-fill"></i> Categories
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_delivery_team' %}active{% endif %}" href="{% url 'admin_delivery_team' %}">
+                <i class="bi bi-truck"></i> Delivery Team
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_users' %}active{% endif %}" href="{% url 'admin_users' %}">
+                <i class="bi bi-people-fill"></i> User Management
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_transactions' %}active{% endif %}" href="{% url 'admin_transactions' %}">
+                <i class="bi bi-credit-card-2-front"></i> Transactions
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'admin_reviews' %}active{% endif %}" href="{% url 'admin_reviews' %}">
+                <i class="bi bi-star-fill text-warning"></i> Customer Reviews
+            </a>
+        </li>
+    </ul>
+
+    <!-- Bottom section -->
+    <div class="mt-auto p-3" style="position: absolute; bottom: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="d-flex align-items-center text-white px-2 mb-2">
+            <i class="bi bi-person-circle me-2"></i>
+            <small>{{ request.user.first_name }} {{ request.user.last_name }}</small>
+        </div>
+        <a href="{% url 'admin_logout' %}" class="btn btn-outline-light btn-sm w-100 rounded-pill">
+            <i class="bi bi-box-arrow-left me-1"></i>Logout
+        </a>
+    </div>
+</nav>
+
+<!-- Mobile toggle -->
+<div class="d-lg-none p-2 bg-white border-bottom sticky-top">
+    <button class="btn btn-sm btn-outline-dark" onclick="document.getElementById('saSidebar').classList.toggle('show')">
+        <i class="bi bi-list"></i> Menu
+    </button>
+    <span class="ms-2 fw-bold">GurungStore Admin</span>
+</div>
+
+<!-- Main Content -->
+<div class="sa-main">
+    <!-- Flash messages -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show py-2" role="alert" style="font-size:0.875rem;">
+        {{ message }}
+        <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

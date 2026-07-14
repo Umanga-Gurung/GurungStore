@@ -1,0 +1,182 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}User Management{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-people-fill me-2"></i>User Management</h4>
+</div>
+
+<!-- Search & Role Filter -->
+<div class="sa-card mb-4">
+    <form method="GET" action="{% url 'admin_users' %}" class="d-flex flex-wrap gap-2 align-items-center">
+        <div class="input-group" style="max-width: 320px;">
+            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+            <input type="text" name="q" value="{{ search_q }}" class="form-control form-control-sm" placeholder="Search by name, email, or phone...">
+        </div>
+        <input type="hidden" name="role" value="{{ role_filter }}">
+        <button type="submit" class="btn btn-sm btn-primary rounded-pill">Search</button>
+
+        <span class="ms-3 fw-medium" style="font-size:0.85rem;">Role:</span>
+        <a href="{% url 'admin_users' %}?q={{ search_q }}&role=all" class="btn btn-sm rounded-pill {% if role_filter == 'all' %}btn-primary{% else %}btn-outline-secondary{% endif %}">All</a>
+        <a href="{% url 'admin_users' %}?q={{ search_q }}&role=customer" class="btn btn-sm rounded-pill {% if role_filter == 'customer' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Customers</a>
+        <a href="{% url 'admin_users' %}?q={{ search_q }}&role=delivery" class="btn btn-sm rounded-pill {% if role_filter == 'delivery' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Delivery Agents</a>
+        <a href="{% url 'admin_users' %}?q={{ search_q }}&role=admin" class="btn btn-sm rounded-pill {% if role_filter == 'admin' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Admins</a>
+    </form>
+</div>
+
+<!-- Users Table -->
+<div class="sa-card">
+    <div class="table-responsive">
+        <table class="table sa-table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Account Status</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td class="fw-medium">
+                        <i class="bi bi-person-circle me-1 text-muted"></i>
+                        {{ user.first_name }} {{ user.last_name }}
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone_number|default:"-" }}</td>
+                    <td>
+                        {% if user.is_superadmin %}
+                        <span class="badge rounded-pill bg-danger">Super Admin</span>
+                        {% elif user.is_admin %}
+                        <span class="badge rounded-pill bg-dark">Admin</span>
+                        {% elif user.is_delivery_person %}
+                        <span class="badge rounded-pill badge-assigned">Delivery Agent</span>
+                        {% else %}
+                        <span class="badge rounded-pill badge-new">Customer</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.is_active %}
+                        <span class="badge rounded-pill badge-completed"><i class="bi bi-check-circle me-1"></i>Active</span>
+                        {% else %}
+                        <span class="badge rounded-pill badge-cancelled"><i class="bi bi-x-circle me-1"></i>Blocked</span>
+                        {% endif %}
+                    </td>
+                    <td style="font-size:0.8rem;">{{ user.date_joined|date:"M d, Y" }}</td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            {% if not user.is_superadmin %}
+                            <button class="btn btn-sm {% if user.is_active %}btn-outline-danger{% else %}btn-outline-success{% endif %} rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#toggleUserModal{{ user.id }}"
+                                    title="{% if user.is_active %}Block Account{% else %}Activate Account{% endif %}">
+                                <i class="bi {% if user.is_active %}bi-lock{% else %}bi-unlock{% endif %}"></i>
+                            </button>
+                            {% if not user.is_admin %}
+                            <button class="btn btn-sm {% if user.is_delivery_person %}btn-outline-warning{% else %}btn-outline-primary{% endif %} rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#toggleDeliveryModal{{ user.id }}"
+                                    title="{% if user.is_delivery_person %}Demote to Customer{% else %}Promote to Delivery Agent{% endif %}">
+                                <i class="bi {% if user.is_delivery_person %}bi-person-dash{% else %}bi-truck{% endif %}"></i>
+                            </button>
+                            {% endif %}
+                            
+                            <button class="btn btn-sm btn-outline-danger rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ user.id }}"
+                                    title="Delete User Account">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Toggle User Status Modal -->
+                <div class="modal fade" id="toggleUserModal{{ user.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold {% if user.is_active %}text-danger{% else %}text-success{% endif %}">
+                                    <i class="bi {% if user.is_active %}bi-exclamation-triangle-fill{% else %}bi-check-circle-fill{% endif %} me-2"></i>
+                                    {% if user.is_active %}Block User Account{% else %}Activate User Account{% endif %}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-3">
+                                <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                                    Are you sure you want to {% if user.is_active %}<strong>block</strong>{% else %}<strong>activate</strong>{% endif %} the account for <strong>"{{ user.first_name }} {{ user.last_name }}"</strong> ({{ user.email }})?
+                                </p>
+                            </div>
+                            <div class="modal-footer border-top-0 pt-0 mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'toggle_user_active' user.id %}" class="btn btn-sm {% if user.is_active %}btn-danger{% else %}btn-success{% endif %} rounded-pill px-4">
+                                    Confirm {% if user.is_active %}Block{% else %}Activate{% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toggle Delivery Role Modal -->
+                <div class="modal fade" id="toggleDeliveryModal{{ user.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold text-primary">
+                                    <i class="bi bi-person-gear me-2"></i>Change User Role
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-3">
+                                <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                                    Are you sure you want to {% if user.is_delivery_person %}demote <strong>"{{ user.first_name }} {{ user.last_name }}"</strong> back to a regular Customer{% else %}promote <strong>"{{ user.first_name }} {{ user.last_name }}"</strong> to a Delivery Agent{% endif %}?
+                                </p>
+                            </div>
+                            <div class="modal-footer border-top-0 pt-0 mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'toggle_user_delivery' user.id %}" class="btn btn-sm btn-primary rounded-pill px-4">
+                                    Confirm Role Change
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete User Confirmation Modal -->
+                <div class="modal fade" id="deleteUserModal{{ user.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold text-danger">
+                                    <i class="bi bi-trash-fill me-2"></i>Delete User Account
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-3">
+                                <p class="mb-1 text-dark fw-medium">
+                                    Are you sure you want to permanently delete the account for <strong>"{{ user.first_name }} {{ user.last_name }}"</strong>?
+                                </p>
+                                <p class="mb-0 text-muted small">
+                                    <i class="bi bi-info-circle me-1"></i>Email: <code>{{ user.email }}</code><br>
+                                    This action cannot be undone. All user data will be permanently removed.
+                                </p>
+                            </div>
+                            <div class="modal-footer border-top-0 pt-0 mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'admin_delete_user' user.id %}" class="btn btn-sm btn-danger rounded-pill px-4">
+                                    Permanently Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <tr><td colspan="7" class="text-center text-muted py-4">No users found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,212 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}Review Moderation{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-star-fill text-warning me-2"></i>Customer Review Moderation</h4>
+</div>
+
+<!-- KPI Cards Row -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="sa-kpi">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="kpi-title">Total Reviews</div>
+                    <div class="kpi-value">{{ total_reviews }}</div>
+                </div>
+                <div class="kpi-icon bg-primary bg-opacity-10 text-primary">
+                    <i class="bi bi-chat-square-text"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="sa-kpi">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="kpi-title">Approved & Visible</div>
+                    <div class="kpi-value text-success">{{ approved_count }}</div>
+                </div>
+                <div class="kpi-icon bg-success bg-opacity-10 text-success">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="sa-kpi">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="kpi-title">Hidden / Unapproved</div>
+                    <div class="kpi-value text-secondary">{{ hidden_count }}</div>
+                </div>
+                <div class="kpi-icon bg-secondary bg-opacity-10 text-secondary">
+                    <i class="bi bi-eye-slash"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="sa-kpi">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="kpi-title">Average Rating</div>
+                    <div class="kpi-value text-warning">★ {{ avg_rating }} / 5</div>
+                </div>
+                <div class="kpi-icon bg-warning bg-opacity-10 text-warning">
+                    <i class="bi bi-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search & Status Filter Bar -->
+<div class="sa-card mb-4">
+    <form method="GET" action="{% url 'admin_reviews' %}" class="d-flex flex-wrap gap-2 align-items-center">
+        <div class="input-group" style="max-width: 320px;">
+            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+            <input type="text" name="q" value="{{ search_q }}" class="form-control form-control-sm" placeholder="Search by customer, product, or keyword...">
+        </div>
+        <input type="hidden" name="status" value="{{ status_filter }}">
+        <button type="submit" class="btn btn-sm btn-primary rounded-pill">Search</button>
+
+        <span class="ms-3 fw-medium" style="font-size:0.85rem;">Filter Status:</span>
+        <a href="{% url 'admin_reviews' %}?q={{ search_q }}&status=all" class="btn btn-sm rounded-pill {% if status_filter == 'all' %}btn-primary{% else %}btn-outline-secondary{% endif %}">All</a>
+        <a href="{% url 'admin_reviews' %}?q={{ search_q }}&status=approved" class="btn btn-sm rounded-pill {% if status_filter == 'approved' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Approved</a>
+        <a href="{% url 'admin_reviews' %}?q={{ search_q }}&status=hidden" class="btn btn-sm rounded-pill {% if status_filter == 'hidden' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Hidden</a>
+    </form>
+</div>
+
+<!-- Reviews Table -->
+<div class="sa-card">
+    <div class="table-responsive">
+        <table class="table sa-table table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Rating</th>
+                    <th style="min-width: 250px;">Review Content</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th style="width:110px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rev in reviews %}
+                <tr>
+                    <td class="fw-medium">
+                        <i class="bi bi-person-circle me-1 text-muted"></i>
+                        {{ rev.user.first_name }} {{ rev.user.last_name }}
+                        <div class="small text-muted" style="font-size:0.75rem;">{{ rev.user.email }}</div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {% if rev.product.image %}
+                            <img src="{{ rev.product.image.url }}" alt="{{ rev.product.product_name }}" style="width:36px; height:36px; object-fit:cover; border-radius:6px;" class="me-2">
+                            {% endif %}
+                            <div class="fw-medium text-dark" style="font-size:0.85rem;">{{ rev.product.product_name }}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-warning fw-bold" style="font-size:0.85rem;">
+                            ★ {{ rev.rating|floatformat:1 }}
+                        </div>
+                    </td>
+                    <td>
+                        {% if rev.subject %}
+                        <div class="fw-bold text-dark" style="font-size:0.85rem;">{{ rev.subject }}</div>
+                        {% endif %}
+                        <div class="text-muted" style="font-size:0.8rem;">{{ rev.review }}</div>
+                    </td>
+                    <td>
+                        {% if rev.status %}
+                        <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:0.75rem;">
+                            <i class="bi bi-eye-fill me-1"></i>Approved
+                        </span>
+                        {% else %}
+                        <span class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1" style="font-size:0.75rem;">
+                            <i class="bi bi-eye-slash-fill me-1"></i>Hidden
+                        </span>
+                        {% endif %}
+                    </td>
+                    <td style="font-size:0.8rem;">{{ rev.created_at|date:"M d, Y" }}</td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            <button class="btn btn-sm {% if rev.status %}btn-outline-secondary{% else %}btn-outline-success{% endif %} rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#toggleReviewModal{{ rev.id }}"
+                                    title="{% if rev.status %}Hide Review{% else %}Approve Review{% endif %}">
+                                <i class="bi {% if rev.status %}bi-eye-slash{% else %}bi-eye{% endif %}"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#deleteReviewModal{{ rev.id }}"
+                                    title="Delete Review">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Toggle Review Approval Modal -->
+                <div class="modal fade" id="toggleReviewModal{{ rev.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold {% if rev.status %}text-secondary{% else %}text-success{% endif %}">
+                                    <i class="bi {% if rev.status %}bi-eye-slash-fill{% else %}bi-check-circle-fill{% endif %} me-2"></i>
+                                    {% if rev.status %}Hide Customer Review{% else %}Approve & Display Review{% endif %}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-3">
+                                <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                                    Are you sure you want to {% if rev.status %}<strong>hide</strong>{% else %}<strong>approve</strong>{% endif %} the review by <strong>"{{ rev.user.first_name }} {{ rev.user.last_name }}"</strong> for product <strong>"{{ rev.product.product_name }}"</strong>?
+                                </p>
+                            </div>
+                            <div class="modal-footer border-top-0 pt-0 mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'toggle_review_status' rev.id %}" class="btn btn-sm {% if rev.status %}btn-secondary{% else %}btn-success{% endif %} rounded-pill px-4">
+                                    Confirm {% if rev.status %}Hide{% else %}Approve{% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete Review Confirmation Modal -->
+                <div class="modal fade" id="deleteReviewModal{{ rev.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold text-danger">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Delete Customer Review
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-3">
+                                <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                                    Are you sure you want to permanently delete the review by <strong>"{{ rev.user.first_name }} {{ rev.user.last_name }}"</strong> for <strong>"{{ rev.product.product_name }}"</strong>? This action cannot be undone.
+                                </p>
+                            </div>
+                            <div class="modal-footer border-top-0 pt-0 mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                <form method="POST" action="{% url 'admin_delete_review' rev.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger rounded-pill px-4">
+                                        <i class="bi bi-trash me-1"></i>Delete Review
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <tr><td colspan="7" class="text-center text-muted py-4">No customer reviews found matching your filter criteria.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

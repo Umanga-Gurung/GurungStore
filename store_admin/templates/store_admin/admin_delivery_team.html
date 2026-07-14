@@ -1,0 +1,116 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}Delivery Team{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-truck me-2"></i>Delivery Team Directory</h4>
+    <div>
+        <button class="btn btn-primary rounded-pill btn-sm" data-bs-toggle="modal" data-bs-target="#addAgentModal">
+            <i class="bi bi-person-plus-fill me-1"></i>Add Delivery Agent
+        </button>
+    </div>
+</div>
+
+<div class="sa-card mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="text-muted" style="font-size:0.85rem;">Active Delivery Personnel: <strong>{{ agent_data|length }} agents</strong></span>
+    </div>
+    <div class="table-responsive">
+        <table class="table sa-table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Agent Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Account Status</th>
+                    <th>Active Orders</th>
+                    <th>Total Completed</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in agent_data %}
+                <tr>
+                    <td class="fw-medium">
+                        <i class="bi bi-person-circle me-1 text-muted"></i>
+                        {{ item.agent.first_name }} {{ item.agent.last_name }}
+                    </td>
+                    <td>{{ item.agent.email }}</td>
+                    <td>{{ item.agent.phone_number|default:"-" }}</td>
+                    <td>
+                        {% if item.agent.is_active %}
+                        <span class="badge rounded-pill badge-completed"><i class="bi bi-check-circle me-1"></i>Active</span>
+                        {% else %}
+                        <span class="badge rounded-pill badge-cancelled"><i class="bi bi-x-circle me-1"></i>Inactive</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.active_count > 0 %}
+                        <span class="badge rounded-pill badge-out">{{ item.active_count }} active</span>
+                        {% else %}
+                        <span class="text-muted" style="font-size:0.8rem;">None</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="fw-bold text-success">{{ item.completed_count }}</span>
+                    </td>
+                    <td style="font-size:0.8rem;">{{ item.agent.date_joined|date:"M d, Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="7" class="text-center text-muted py-4">No delivery agents registered. Click "Add Delivery Agent" to register one.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Delivery Agent Modal -->
+<div class="modal fade" id="addAgentModal" tabindex="-1" aria-labelledby="addAgentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold" id="addAgentModalLabel">
+                    <i class="bi bi-person-plus-fill me-2 text-primary"></i>Add New Delivery Agent
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{% url 'admin_add_delivery_agent' %}">
+                {% csrf_token %}
+                <div class="modal-body pt-3">
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label fw-medium" style="font-size:0.85rem;">First Name <span class="text-danger">*</span></label>
+                            <input type="text" name="first_name" class="form-control form-control-sm" placeholder="e.g. Ram" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-medium" style="font-size:0.85rem;">Last Name <span class="text-danger">*</span></label>
+                            <input type="text" name="last_name" class="form-control form-control-sm" placeholder="e.g. Shrestha" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Email Address <span class="text-danger">*</span></label>
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="delivery@gurungstore.com" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Phone Number <span class="text-danger">*</span></label>
+                        <input type="text" name="phone_number" class="form-control form-control-sm" placeholder="e.g. 9801234567" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Password <span class="text-danger">*</span></label>
+                        <input type="password" name="password" class="form-control form-control-sm" placeholder="Enter account password" required>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">
+                        <i class="bi bi-check-lg me-1"></i>Create Delivery Agent
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

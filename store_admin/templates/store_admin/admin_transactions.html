@@ -1,0 +1,63 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}Transactions{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-credit-card-2-front me-2"></i>eSewa Transaction Log</h4>
+    <span class="text-muted" style="font-size:0.85rem;">{{ transactions|length }} transactions</span>
+</div>
+
+<div class="sa-card">
+    <div class="table-responsive">
+        <table class="table sa-table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Customer</th>
+                    <th>Payment Method</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for txn in transactions %}
+                <tr>
+                    <td class="fw-medium" style="font-family: monospace; font-size: 0.85rem;">{{ txn.payment_id }}</td>
+                    <td>
+                        <i class="bi bi-person-circle me-1 text-muted"></i>
+                        {{ txn.user.first_name }} {{ txn.user.last_name }}
+                    </td>
+                    <td>
+                        {% if txn.payment_method == 'eSewa' %}
+                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill">
+                            <i class="bi bi-wallet2 me-1"></i>eSewa
+                        </span>
+                        {% else %}
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill">
+                            {{ txn.payment_method }}
+                        </span>
+                        {% endif %}
+                    </td>
+                    <td>Rs. {{ txn.amount_paid }}</td>
+                    <td>
+                        {% if txn.status == 'COMPLETE' or txn.status == 'Completed' %}
+                        <span class="badge rounded-pill badge-completed"><i class="bi bi-check-circle me-1"></i>{{ txn.status }}</span>
+                        {% elif txn.status == 'PENDING' or txn.status == 'Pending' %}
+                        <span class="badge rounded-pill badge-out"><i class="bi bi-clock me-1"></i>{{ txn.status }}</span>
+                        {% elif txn.status == 'FAILED' or txn.status == 'Failed' %}
+                        <span class="badge rounded-pill badge-cancelled"><i class="bi bi-x-circle me-1"></i>{{ txn.status }}</span>
+                        {% else %}
+                        <span class="badge rounded-pill badge-pending">{{ txn.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td style="font-size:0.8rem;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="6" class="text-center text-muted py-4">No transactions recorded.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}Category Management{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-tags-fill me-2"></i>Category Management</h4>
+    <div>
+        <button class="btn btn-primary rounded-pill btn-sm" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+            <i class="bi bi-plus-lg me-1"></i>Add New Category
+        </button>
+    </div>
+</div>
+
+<div class="sa-card mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="text-muted" style="font-size:0.85rem;">Total Store Categories: <strong>{{ categories|length }} categories</strong></span>
+    </div>
+    <div class="table-responsive">
+        <table class="table sa-table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th style="width:100px;">Icon</th>
+                    <th>Category Name</th>
+                    <th>Slug</th>
+                    <th>Products Count</th>
+                    <th style="width:140px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>
+                        <span class="badge bg-light text-dark border px-2 py-1">
+                            <i class="{{ category.icon|default:'ci-grid' }} me-1"></i> {{ category.icon|default:"ci-grid" }}
+                        </span>
+                    </td>
+                    <td class="fw-bold text-dark">{{ category.category_name }}</td>
+                    <td><code class="text-muted" style="font-size:0.8rem;">{{ category.slug }}</code></td>
+                    <td>
+                        {% if category.product_count > 0 %}
+                        <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary fw-medium px-2 py-1">
+                            <i class="bi bi-box-seam me-1"></i>{{ category.product_count }} Product{% if category.product_count > 1 %}s{% endif %}
+                        </span>
+                        {% else %}
+                        <span class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary px-2 py-1">
+                            0 Products
+                        </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            <button class="btn btn-sm btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ category.id }}" title="Edit Category">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal{{ category.id }}" title="Delete Category">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Edit Category Modal -->
+                <div class="modal fade" id="editCategoryModal{{ category.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold">
+                                    <i class="bi bi-pencil-square me-2 text-primary"></i>Edit Category
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form method="POST" action="{% url 'admin_edit_category' category.id %}">
+                                {% csrf_token %}
+                                <div class="modal-body pt-3">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-medium" style="font-size:0.85rem;">Category Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="category_name" value="{{ category.category_name }}" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-medium" style="font-size:0.85rem;">CSS Icon Class</label>
+                                        <input type="text" name="icon" value="{{ category.icon }}" class="form-control form-control-sm" placeholder="e.g. ci-bread, ci-fish, ci-apple">
+                                        <div class="form-text" style="font-size:0.75rem;">Icons used: ci-bread, ci-fish, ci-apple, ci-coffee, ci-ice-cream, ci-basket, ci-grid</div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer border-top-0 pt-0">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">
+                                        <i class="bi bi-check-lg me-1"></i>Update Category
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete Category Modal -->
+                <div class="modal fade" id="deleteCategoryModal{{ category.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-3 border-0 shadow">
+                            <div class="modal-header border-bottom-0 pb-0">
+                                <h5 class="modal-title fw-bold text-danger">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Delete Category
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-3">
+                                {% if category.product_count > 0 %}
+                                <div class="alert alert-warning py-2 mb-0" style="font-size:0.85rem;">
+                                    <i class="bi bi-shield-exclamation me-1"></i>
+                                    <strong>Cannot Delete:</strong> Category <strong>"{{ category.category_name }}"</strong> currently has <strong>{{ category.product_count }} product(s)</strong> attached to it. Please reassign or delete those products first.
+                                </div>
+                                {% else %}
+                                <p class="mb-0 text-muted" style="font-size:0.9rem;">
+                                    Are you sure you want to delete the category <strong>"{{ category.category_name }}"</strong>? This action cannot be undone.
+                                </p>
+                                {% endif %}
+                            </div>
+                            <div class="modal-footer border-top-0 pt-0 mt-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                                {% if category.product_count == 0 %}
+                                <form method="POST" action="{% url 'admin_delete_category' category.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger rounded-pill px-4">
+                                        <i class="bi bi-trash me-1"></i>Delete Category
+                                    </button>
+                                </form>
+                                {% else %}
+                                <button type="button" class="btn btn-sm btn-secondary rounded-pill px-4" disabled>
+                                    Cannot Delete
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <tr><td colspan="5" class="text-center text-muted py-4">No categories found. Click "Add New Category" to create one.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Category Modal -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold" id="addCategoryModalLabel">
+                    <i class="bi bi-plus-circle me-2 text-primary"></i>Add New Category
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{% url 'admin_add_category' %}">
+                {% csrf_token %}
+                <div class="modal-body pt-3">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">Category Name <span class="text-danger">*</span></label>
+                        <input type="text" name="category_name" class="form-control form-control-sm" placeholder="e.g. Organic Dairy" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium" style="font-size:0.85rem;">CSS Icon Class</label>
+                        <input type="text" name="icon" class="form-control form-control-sm" placeholder="e.g. ci-bread, ci-fish, ci-apple, ci-coffee" value="ci-grid">
+                        <div class="form-text" style="font-size:0.75rem;">Common Cartzilla Icons: <code>ci-bread</code>, <code>ci-fish</code>, <code>ci-apple</code>, <code>ci-coffee</code>, <code>ci-ice-cream</code>, <code>ci-basket</code>, <code>ci-grid</code>.</div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-4">
+                        <i class="bi bi-check-lg me-1"></i>Save Category
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

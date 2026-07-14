@@ -1,0 +1,203 @@
+{% extends "store_admin/admin_base.html" %}
+{% load static %}
+{% block title %}Order #{{ order.order_number }}{% endblock %}
+
+{% block content %}
+<div class="sa-topbar d-print-none">
+    <div class="d-flex align-items-center gap-2">
+        <a href="{% url 'admin_orders' %}" class="btn btn-sm btn-outline-secondary rounded-pill">
+            <i class="bi bi-arrow-left me-1"></i>Back to Orders
+        </a>
+        <h4 class="mb-0 ms-2"><i class="bi bi-receipt me-2"></i>Order Invoice #{{ order.order_number }}</h4>
+    </div>
+    <div>
+        <button onclick="window.print()" class="btn btn-sm btn-outline-primary rounded-pill">
+            <i class="bi bi-printer me-1"></i>Print Invoice
+        </button>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Main Invoice Card -->
+    <div class="col-lg-8">
+        <div class="sa-card mb-4" id="invoiceArea">
+            <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3">
+                <div>
+                    <h5 class="fw-bold mb-1 text-primary"><i class="bi bi-shop me-2"></i>GurungStore</h5>
+                    <div class="text-muted" style="font-size:0.8rem;">Official Customer Order Invoice</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge rounded-pill fs-6
+                        {% if order.status == 'New' %}badge-new
+                        {% elif order.status == 'Accepted' %}badge-accepted
+                        {% elif order.status == 'Completed' %}badge-completed
+                        {% elif order.status == 'Cancelled' %}badge-cancelled
+                        {% endif %} mb-1">
+                        Status: {{ order.status }}
+                    </span>
+                    <div class="text-muted" style="font-size:0.8rem;">Order Date: {{ order.created_at|date:"M d, Y H:i" }}</div>
+                </div>
+            </div>
+
+            <!-- Customer & Shipping Details -->
+            <div class="row g-3 mb-4" style="font-size:0.875rem;">
+                <div class="col-sm-6">
+                    <div class="p-3 bg-light rounded-3 h-100">
+                        <div class="fw-bold text-dark mb-1"><i class="bi bi-person-fill me-1 text-primary"></i>Customer Details</div>
+                        <div class="fw-semibold">{{ order.full_name }}</div>
+                        <div class="text-muted"><i class="bi bi-envelope me-1"></i>{{ order.email }}</div>
+                        <div class="text-muted"><i class="bi bi-telephone me-1"></i>{{ order.phone_number }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="p-3 bg-light rounded-3 h-100">
+                        <div class="fw-bold text-dark mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Delivery Address</div>
+                        <div>{{ order.address_line_1 }}</div>
+                        {% if order.address_line_2 %}<div>{{ order.address_line_2 }}</div>{% endif %}
+                        <div class="fw-semibold">{{ order.city }}</div>
+                        {% if order.order_note %}
+                        <div class="mt-2 text-muted fst-italic" style="font-size:0.8rem;">
+                            <strong>Note:</strong> "{{ order.order_note }}"
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Table -->
+            <div class="table-responsive mb-3">
+                <table class="table sa-table table-bordered align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Item Description</th>
+                            <th class="text-center" style="width:100px;">Price</th>
+                            <th class="text-center" style="width:80px;">Qty</th>
+                            <th class="text-end" style="width:120px;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order_items %}
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    {% if item.product.image %}
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.product_name }}" style="width:40px; height:40px; object-fit:cover; border-radius:6px;" class="me-2">
+                                    {% endif %}
+                                    <div>
+                                        <div class="fw-medium text-dark">{{ item.product.product_name }}</div>
+                                        <small class="text-muted">{{ item.product.category.category_name }}</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">Rs. {{ item.product_price }}</td>
+                            <td class="text-center fw-bold">{{ item.quantity }}</td>
+                            <td class="text-end fw-bold">Rs. {% widthratio item.product_price 1 item.quantity %}</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="4" class="text-center text-muted py-3">No items found for this order.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot class="table-light">
+                        <tr>
+                            <th colspan="3" class="text-end">Subtotal:</th>
+                            <td class="text-end fw-bold">Rs. {{ subtotal }}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="3" class="text-end fs-6">Grand Total:</th>
+                            <td class="text-end fw-bold fs-6 text-primary">Rs. {{ order.order_total }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Info Panel (Delivery & Payment Status) -->
+    <div class="col-lg-4 d-print-none">
+        <!-- Delivery Status & Assignment -->
+        <div class="sa-card mb-4">
+            <div class="card-title"><i class="bi bi-truck me-2 text-warning"></i>Delivery Management</div>
+            <div class="mb-3">
+                <label class="form-label text-muted mb-1" style="font-size:0.8rem;">Current Delivery Status:</label>
+                <div>
+                    <span class="badge rounded-pill px-3 py-2 fs-6
+                        {% if order.delivery_status == 'Pending' %}badge-pending
+                        {% elif order.delivery_status == 'Assigned' %}badge-assigned
+                        {% elif order.delivery_status == 'Out for Delivery' %}badge-out
+                        {% elif order.delivery_status == 'OTP Sent' %}badge-otp
+                        {% elif order.delivery_status == 'Completed' %}badge-completed
+                        {% endif %}">
+                        <i class="bi bi-info-circle me-1"></i>{{ order.delivery_status }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-muted mb-1" style="font-size:0.8rem;">Assigned Delivery Person:</label>
+                {% if order.delivery_person %}
+                <div class="p-2 border rounded bg-light">
+                    <div class="fw-bold text-dark"><i class="bi bi-person-badge me-1"></i>{{ order.delivery_person.full_name }}</div>
+                    <div class="small text-muted"><i class="bi bi-envelope me-1"></i>{{ order.delivery_person.email }}</div>
+                    {% if order.delivery_person.phone_number %}
+                    <div class="small text-muted"><i class="bi bi-telephone me-1"></i>{{ order.delivery_person.phone_number }}</div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="text-muted small italic">No delivery person assigned yet.</div>
+                {% endif %}
+            </div>
+
+            {% if order.delivery_status != 'Completed' %}
+            <form method="POST" action="{% url 'assign_delivery' order.id %}" class="mt-3">
+                {% csrf_token %}
+                <label class="form-label fw-medium" style="font-size:0.85rem;">Assign / Change Delivery Agent:</label>
+                <div class="d-flex gap-2">
+                    <select name="delivery_person" class="form-select form-select-sm">
+                        <option value="">-- Unassign --</option>
+                        {% for agent in delivery_agents %}
+                        <option value="{{ agent.id }}" {% if order.delivery_person == agent %}selected{% endif %}>
+                            {{ agent.first_name }} {{ agent.last_name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-3">Assign</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="alert alert-success py-2 mt-3 mb-0" style="font-size:0.8rem;">
+                <i class="bi bi-check-circle-fill me-1"></i>Delivery completed and OTP verified.
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Payment Audit Log -->
+        <div class="sa-card">
+            <div class="card-title"><i class="bi bi-credit-card me-2 text-success"></i>Payment Details</div>
+            {% if order.payment %}
+            <ul class="list-group list-group-flush" style="font-size:0.85rem;">
+                <li class="list-group-item d-flex justify-content-between px-0">
+                    <span class="text-muted">Transaction ID:</span>
+                    <strong class="font-monospace">{{ order.payment.payment_id }}</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between px-0">
+                    <span class="text-muted">Payment Method:</span>
+                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-2 py-1">
+                        <i class="bi bi-wallet2 me-1"></i>{{ order.payment.payment_method }}
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between px-0">
+                    <span class="text-muted">Amount Paid:</span>
+                    <strong>Rs. {{ order.payment.amount_paid }}</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between px-0">
+                    <span class="text-muted">Payment Status:</span>
+                    <span class="badge badge-completed">{{ order.payment.status }}</span>
+                </li>
+            </ul>
+            {% else %}
+            <div class="text-muted small">No payment record linked.</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

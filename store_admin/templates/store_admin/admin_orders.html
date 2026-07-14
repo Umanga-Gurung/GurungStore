@@ -1,0 +1,109 @@
+{% extends "store_admin/admin_base.html" %}
+{% block title %}Orders & Dispatch{% endblock %}
+
+{% block content %}
+<div class="sa-topbar">
+    <h4><i class="bi bi-receipt me-2"></i>Orders & Dispatch Center</h4>
+</div>
+
+<!-- Filters -->
+<div class="sa-card mb-4">
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+        <span class="fw-medium me-2" style="font-size:0.85rem;">Order Status:</span>
+        <a href="{% url 'admin_orders' %}?status=all&delivery={{ delivery_filter }}" class="btn btn-sm rounded-pill {% if status_filter == 'all' %}btn-primary{% else %}btn-outline-secondary{% endif %}">All</a>
+        <a href="{% url 'admin_orders' %}?status=New&delivery={{ delivery_filter }}" class="btn btn-sm rounded-pill {% if status_filter == 'New' %}btn-primary{% else %}btn-outline-secondary{% endif %}">New</a>
+        <a href="{% url 'admin_orders' %}?status=Accepted&delivery={{ delivery_filter }}" class="btn btn-sm rounded-pill {% if status_filter == 'Accepted' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Accepted</a>
+        <a href="{% url 'admin_orders' %}?status=Completed&delivery={{ delivery_filter }}" class="btn btn-sm rounded-pill {% if status_filter == 'Completed' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Completed</a>
+        <a href="{% url 'admin_orders' %}?status=Cancelled&delivery={{ delivery_filter }}" class="btn btn-sm rounded-pill {% if status_filter == 'Cancelled' %}btn-primary{% else %}btn-outline-secondary{% endif %}">Cancelled</a>
+
+        <span class="ms-3 fw-medium me-2" style="font-size:0.85rem;">Delivery:</span>
+        <a href="{% url 'admin_orders' %}?status={{ status_filter }}&delivery=all" class="btn btn-sm rounded-pill {% if delivery_filter == 'all' %}btn-warning{% else %}btn-outline-secondary{% endif %}">All</a>
+        <a href="{% url 'admin_orders' %}?status={{ status_filter }}&delivery=Pending" class="btn btn-sm rounded-pill {% if delivery_filter == 'Pending' %}btn-warning{% else %}btn-outline-secondary{% endif %}">Pending</a>
+        <a href="{% url 'admin_orders' %}?status={{ status_filter }}&delivery=Assigned" class="btn btn-sm rounded-pill {% if delivery_filter == 'Assigned' %}btn-warning{% else %}btn-outline-secondary{% endif %}">Assigned</a>
+        <a href="{% url 'admin_orders' %}?status={{ status_filter }}&delivery=Out for Delivery" class="btn btn-sm rounded-pill {% if delivery_filter == 'Out for Delivery' %}btn-warning{% else %}btn-outline-secondary{% endif %}">Out for Delivery</a>
+        <a href="{% url 'admin_orders' %}?status={{ status_filter }}&delivery=Completed" class="btn btn-sm rounded-pill {% if delivery_filter == 'Completed' %}btn-warning{% else %}btn-outline-secondary{% endif %}">Completed</a>
+    </div>
+</div>
+
+<!-- Orders Table -->
+<div class="sa-card">
+    <div class="table-responsive">
+        <table class="table sa-table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Delivery Status</th>
+                    <th>Assign Agent</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <td class="fw-medium">
+                        <a href="{% url 'admin_order_detail' order.id %}" class="text-decoration-none fw-bold text-primary" title="View Order Invoice & Details">
+                            <i class="bi bi-eye-fill me-1" style="font-size:0.8rem;"></i>{{ order.order_number }}
+                        </a>
+                    </td>
+                    <td>{{ order.full_name }}</td>
+                    <td>{{ order.phone_number }}</td>
+                    <td>{{ order.city }}</td>
+                    <td>Rs. {{ order.order_total }}</td>
+                    <td>
+                        <span class="badge rounded-pill
+                            {% if order.status == 'New' %}badge-new
+                            {% elif order.status == 'Accepted' %}badge-accepted
+                            {% elif order.status == 'Completed' %}badge-completed
+                            {% elif order.status == 'Cancelled' %}badge-cancelled
+                            {% endif %}">{{ order.status }}</span>
+                    </td>
+                    <td>
+                        <span class="badge rounded-pill
+                            {% if order.delivery_status == 'Pending' %}badge-pending
+                            {% elif order.delivery_status == 'Assigned' %}badge-assigned
+                            {% elif order.delivery_status == 'Out for Delivery' %}badge-out
+                            {% elif order.delivery_status == 'OTP Sent' %}badge-otp
+                            {% elif order.delivery_status == 'Completed' %}badge-completed
+                            {% endif %}">{{ order.delivery_status }}</span>
+                    </td>
+                    <td>
+                        {% if order.delivery_status == 'Completed' %}
+                        <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:0.8rem;">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            {% if order.delivery_person %}
+                                Delivered by {{ order.delivery_person.first_name }} {{ order.delivery_person.last_name }}
+                            {% else %}
+                                Delivered
+                            {% endif %}
+                        </span>
+                        {% else %}
+                        <form method="POST" action="{% url 'assign_delivery' order.id %}" class="d-flex align-items-center gap-1">
+                            {% csrf_token %}
+                            <select name="delivery_person" class="form-select form-select-sm" style="width: 140px; font-size: 0.8rem;">
+                                <option value="">-- None --</option>
+                                {% for agent in delivery_agents %}
+                                <option value="{{ agent.id }}" {% if order.delivery_person == agent %}selected{% endif %}>
+                                    {{ agent.first_name }} {{ agent.last_name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-primary" title="Assign">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                        {% endif %}
+                    </td>
+                    <td style="font-size:0.8rem;">{{ order.created_at|date:"M d, Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="9" class="text-center text-muted py-4">No orders found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
