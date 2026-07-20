@@ -1,0 +1,2327 @@
+[
+{
+  "model": "sessions.session",
+  "pk": "099xqwzqt4py68prt32s8cwo100i5dab",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1loYQ5:O7Yhhu1Ljat28t833NGz15cXKvllffzQ6WE6h4nXVi8",
+    "expire_date": "2021-06-16T21:28:57.254Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "12joi235n2lsu3whl2mt5z042jcmng1z",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wiTLy:IhRMXFntwwq7QoI-zcEgFVnZ5PJp_0c_t-ivM6ZiA1w",
+    "expire_date": "2026-07-25T08:46:30.160Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "16gg8c1a7c7xuxr3flpq24l5ae9mpx8f",
+  "fields": {
+    "session_data": "e30:1ofbQ5:Y_0MP5Vbk_ICu7ckIhkmsLRRDP9dTPnWadssWbtVegc",
+    "expire_date": "2022-10-18T06:28:45.602Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "18pkahbfb6kxdbgmrnbhyatn8z04hli6",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8HB4u3fsNZGBAqgaS0q6M_26bdKHbc869bxZwXWpYR57DROzCpGanXxgxPXPbDT2w3TtPvS3zFPme8MMOfuuUX9ej_TuoOOq29uDAGbSWPMacTfEieqGESQpQO5AKioWNF0kipUJWFu-MS5pkUWfBPl_-vDfv:1oHo2L:z72uILGxkMiuXsnZMTD6ojnnjJTPgm4M-5voolWENcs",
+    "expire_date": "2022-08-13T15:05:53.067Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2a2wvg34ip5drr79dva0g11wul4bfso1",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCgQBmX7j0DmWFAqoYmpV0Z765NutDtf-_9l4i4rTVuPS9xYnEWWonT70iYHrnthO_YbrNMc1uXieSuyIN2eZ05Py-H-3dQsddvPTgDynsYtU0JHBJYp0cAHYiMNoUCZzKUCQbDiUtgX5xyoJDIhhLE-wPqyDgV:1m2b0Y:RZc-b-SpCujfysNeP-Ri7GFEx1CFYYvww43mo7EjT3c",
+    "expire_date": "2021-07-25T15:04:38.734Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2ns2iutkv6e1ahseoke6zac75w09zqdq",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSG8mXHp3m8gwIBUDU1KuzL-uzbpQrf3nHNfLMRtbWEbZQkTsTMDdvrdUsyP0ndA99hvM89zX5cp8V3hBx38OlN5Xg7376DF0b61cQjeRYkknEBpMxVXhcJkbVU2V00GqtHo0VYZQYCjhFolCR6sVo69P8IoNq8:1lvpma:Md2tQQbgpY6vGdb3OzhM9vCtuBbZnEi1I6wTLytTLmc",
+    "expire_date": "2021-07-06T23:26:16.511Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "30w0wounmhfu2egldfkbtd6g61czmqm5",
+  "fields": {
+    "session_data": "e30:1wovky:-cqEu9b9ZD05t4LX4Qn4Ak6MfXtkH7XFJc3kkld06gU",
+    "expire_date": "2026-08-12T04:19:00.977Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "3ehamtl1i24bdovlhwmodzokk1ufdkim",
+  "fields": {
+    "session_data": "e30:1m5rFI:4RMteFNRrJc0VxL7MXqFdFE3ESdVccgQiNO7P45obZo",
+    "expire_date": "2021-08-03T15:01:20.800Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "59mxj5dj7oives3si3qjhznuhs04t5z7",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wpGbw:UMKhN0vMXAJiblB-Z85xGYA1xAKFDwft05efXXlQPyI",
+    "expire_date": "2026-08-13T02:35:04.171Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "59s7xpmxjsdptyfwaabsx6ffzs5vker8",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wp6z4:pZVV6Rj7mhou5KkhriuvloMFn1637l18x8fpaKJn86E",
+    "expire_date": "2026-08-12T16:18:18.376Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "65d7bx3yohygafduyfe2asbjrenxwun6",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OAXaDt0btvaBYWpGrapLQn499Nkx70OjOZN4y8b3XcW17HSWAA08HlF0ZOzzwfRh483xeVlnlbp6iORJ22qdsi-XU9279B5VZhABvQUdActSD1vcXE2hgqxRM7h4RCibSzunM2xOiLySbbUBidRBQPny_XpTcu:1woyOD:9i9gwcLC4f9dfTytnkhGM_bPP0Umxyu9LRjlOXFk0_s",
+    "expire_date": "2026-08-12T07:07:41.557Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7nwhtp9jdp2ppd18ivivv72cbq2e093t",
+  "fields": {
+    "session_data": "e30:1lv8D0:VEpQ2Ue7NOnk21B7hyCNJt7PPRi3OnxNslT0lNVF4M8",
+    "expire_date": "2021-07-05T00:54:38.875Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "84ozacdei5pk8om4hqv6x2vmo9tg1g7l",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1lokTX:wijzIKbD_ZxhQDon5lw84OAtbxTN2RRuZbdldDxRnZM",
+    "expire_date": "2021-06-17T10:21:19.641Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8oz2z432v0j2jf6v1p7isz89uhquioyl",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wp785:puVa6aMgFEKj3-YHtvgA8QMzEapNxU3OFnFMZEFYGjg",
+    "expire_date": "2026-08-12T16:27:37.176Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "a7l6pmhsmamlj5fcna5c2uibjxv4w1xa",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFQHh1cuvcbyACDVA0kpV0Z_11JutDtPefcF_O4b8XvnVa_JHZmkp1-t4DxQXWAdMd6azy2uq1L4EPhB-382hI9L4f7d1Cwl1GDmnIAcGgmVLMA47KU0ulE2QmFcgbSZJKNhoIDi9oG-1WFQZ0VBPb-ANDYN4U:1ln5HG:jptcHI4ToF0b6AUCkC0mRnWoknBqi-zFUNyX7ya5Wc0",
+    "expire_date": "2021-06-12T20:09:46.061Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "e1t4yl4rrt7eglvcag4o7eg2npbcw4jr",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wiEfg:RHxrO-9YMec3-t1HsA22hfkJOBWLN3GohvhIZoGUXlg",
+    "expire_date": "2026-07-24T17:05:52.244Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ebdv9syhjzho7nfs5rk1adh9mao9u5w7",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1woluy:NBl9TIJ2bzIGtBDvrwTr3NyQ8XP7b37RR6aIduh5sAY",
+    "expire_date": "2026-08-11T17:48:40.483Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ec9d2k5nhlaocbelncyiuvf74iouy9ay",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1lvB7F:5pZEi-15Og5BIcCKKzPT772jxiqeeQYoPsM0CmnIYLc",
+    "expire_date": "2021-07-05T04:00:53.266Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "emne4r2qkwbdrk8ftss3fnnfog21s3nc",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wozSE:lKX5hIVj9fYksgABsAXxDqV3eGpgHnGvlyWVo3QtvtI",
+    "expire_date": "2026-08-12T08:15:54.883Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "eon8nkkl5boe52ffr5mdpbu8lq4kc6k5",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSHWGNabMr3PgJYFBycRSP5UUe4eWXKRtG9m3lsF3rcS9jUvYU7qqsCry-8YWZ65HiQ9uN6blla3ZY76UPRJVz22lF-30_07KLyWo-7JcSYLE6ABSN4ZwxYEvZCTDgVNBNtHjAMhA3HyQpEG77rJGkD1-QLpbTcX:1whuHz:zvnVFvMKSASwWEVV4OLFHU2tnk_3yIsoROyltktjdZE",
+    "expire_date": "2026-07-23T19:20:03.877Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "fzp4fn1lvprl7etx0vdrcw11st8jacs9",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmx48-Gkp4zRLveNQ4gW8qnQtwdIqWA9s3Me6kRt7WM2yLzOLE6K6dOvxthekjdAd-x3ppOra7zRHpX9EEXfW0sz8vh_h0UXMq3JkEJGL0ZoIckET1bToO41GVjwfSBXSIEcD1GIjI-OwssOQaGjrx6fwAEADib:1lqa7v:3CT-_s3017wwW37jTPUpM4u3Icf9VCoZ2NHdL_afawQ",
+    "expire_date": "2021-06-22T11:42:35.636Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "heuyh303ost5kum5ptkqpdudwgzi0cc5",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1lv7zE:hW_P5uRB4Afqga3mz4SSBcRK9u6oxg_e_7q_veQ7_3Y",
+    "expire_date": "2021-07-05T00:40:24.019Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hkah90u1v0nfiy7lg9m2ssclnxkpq22z",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSHWGNabMr3PgJYFBycRSP5UUe4eWXKRtG9m3lsF3rcS9jUvYU7qqsCry-8YWZ65HiQ9uN6blla3ZY76UPRJVz22lF-30_07KLyWo-7JcSYLE6ABSN4ZwxYEvZCTDgVNBNtHjAMhA3HyQpEG77rJGkD1-QLpbTcX:1wiDik:LaAZSTGtA0oELgNo7_UcjVaydCKzv_US-O6eZ1SAgRU",
+    "expire_date": "2026-07-24T16:04:58.769Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hv1k6rj6hfb48tygbvxsczwegh20er0b",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSG8mXHp3m8gwIBUDU1KuzL-uzbpQrf3nHNfLMRtbWEbZQkTsTMDdvrdUsyP0ndA99hvM89zX5cp8V3hBx38OlN5Xg7376DF0b61cQjeRYkknEBpMxVXhcJkbVU2V00GqtHo0VYZQYCjhFolCR6sVo69P8IoNq8:1lvpo6:TSgC_8Rgj3HhZXN2D_ygsUNrdkm70tYRu0pCHm4nKxY",
+    "expire_date": "2021-07-06T23:27:50.952Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "if6r2mrozrlu3i3iete4noxhkte52cgv",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1lv8ML:HWpZDUC_nu33DU4YcOZXrrMUlu5G-N48J9jwkyqP4Rc",
+    "expire_date": "2021-07-05T01:04:17.794Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jqr182b1tnqtcs9ae82pn4s8521wf440",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8HB4u3fsNZGBAqgaS0q6M_26bdKHbc869bxZwXWpYR57DROzCpGanXxgxPXPbDT2w3TtPvS3zFPme8MMOfuuUX9ej_TuoOOq29uDAGbSWPMacTfEieqGESQpQO5AKioWNF0kipUJWFu-MS5pkUWfBPl_-vDfv:1oHiSR:06NY8twBq_yfsLns7wzOS3rbkOJBmB-CoTpN2bX3kco",
+    "expire_date": "2022-08-13T09:08:27.126Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "koh14hxjeyaj0s9kbwi1242aicyiby3a",
+  "fields": {
+    "session_data": "e30:1lv9UV:taHsUkuCNtIkWcvDLrbADVafybdz9aIeokqf8HkvxLU",
+    "expire_date": "2021-07-05T02:16:47.484Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "l3lzfftlmz73x2wymyxjavhjodjdx8lx",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1wjAj4:5c9VNmEDButI2a3YOz7QQ4_WMrxsVFZ6E1mSznfcidU",
+    "expire_date": "2026-07-27T07:05:14.683Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "mk1ckp4v8limgpgouj3rnc31rrbeai9n",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSHWGNabMr3PgJYFBycRSP5UUe4eWXKRtG9m3lsF3rcS9jUvYU7qqsCry-8YWZ65HiQ9uN6blla3ZY76UPRJVz22lF-30_07KLyWo-7JcSYLE6ABSN4ZwxYEvZCTDgVNBNtHjAMhA3HyQpEG77rJGkD1-QLpbTcX:1wpGV1:qkPz-9AdCPIUEnZzBsrvxjXrIwaUF_ONAWlyrB1yKvU",
+    "expire_date": "2026-08-13T02:27:55.987Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "mop198n4xiy2oepvmqx87hp4kubnpfds",
+  "fields": {
+    "session_data": "e30:1lv8g5:zDHw8nPkzX5cqkCBfPWTdbeGH-Y4wNaJyIRyN7HPQXk",
+    "expire_date": "2021-07-05T01:24:41.475Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "n6zk53mm1qt78ykmtfl0jbqls4d57i39",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1lv8AA:diVaIWEO56EQ8n3ibbPClsgiJ7fNgko4LpbJb5_2sAM",
+    "expire_date": "2021-07-05T00:51:42.652Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nk1yc0byep7ds22ulroc9u9fx6cs86xl",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8HB4u3fsNZGBAqgaS0q6M_26bdKHbc869bxZwXWpYR57DROzCpGanXxgxPXPbDT2w3TtPvS3zFPme8MMOfuuUX9ej_TuoOOq29uDAGbSWPMacTfEieqGESQpQO5AKioWNF0kipUJWFu-MS5pkUWfBPl_-vDfv:1oHik6:h_VZF0WMbLhKKv86OcJ9nlLsXBtJyM7fPD5cqW1qmOw",
+    "expire_date": "2022-08-13T09:26:42.795Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nwz7teuu7cketydb0727t1ldhgjw52zm",
+  "fields": {
+    "session_data": "e30:1lnONV:lKb3jXbzb3deC87VaeQBRAKDCS2CTWdEXqhUvmNCWe4",
+    "expire_date": "2021-06-13T16:33:29.789Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "p263ypxlbrof2525hre98v20nqfjr9u8",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1loYKY:QJ-BEiym3iolOGUKWf6cnRKCadjw7cx6eqMJvTU9Pfs",
+    "expire_date": "2021-06-16T21:23:14.354Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "p2ew2k2vyuolkd3mi1kyow8drtlswox3",
+  "fields": {
+    "session_data": "e30:1ohRSL:GaERGoVJttBY0V0c1BeyVjm1-XU1kELw7snDRMGS_9k",
+    "expire_date": "2022-10-23T08:14:41.781Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qxbo1m6nimblz463gxmkj4a00vbh5406",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAOBUZcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERAOL0O8aQHlx3QvdQb02mVtdljnJX5EG7nBrx83q4fwcl9PKtrSZgUkSsI5hoEXPEOJxRW5eUC8GyNsgGjTJA4wAADFmpMaeUswPx_gAL2DgC:1oHN6G:nkRY2BBtQjI1KQrMfsvNlBWji8LGq90abu85PxwOZYs",
+    "expire_date": "2022-08-12T10:20:08.969Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rsi42ucjgt72botdl1c723c542s9br8t",
+  "fields": {
+    "session_data": "e30:1m5rEX:PoiwJ2PfmXsJAB_bzkhhvMQd2w1j9fUydCHnnAX99Xk",
+    "expire_date": "2021-08-03T15:00:33.937Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "tdltf9v18ns592cfogh5hqqknat7hsl1",
+  "fields": {
+    "session_data": "e30:1lx5cZ:NeD870oRSGni1fVvKyp2eK1vSlmFMD0-p-COIk78vsY",
+    "expire_date": "2021-07-10T10:33:07.758Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "trc4sz55aagf302mvq83ctdigokbtty0",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OAXaDt0btvaBYWpGrapLQn499Nkx70OjOZN4y8b3XcW17HSWAA08HlF0ZOzzwfRh483xeVlnlbp6iORJ22qdsi-XU9279B5VZhABvQUdActSD1vcXE2hgqxRM7h4RCibSzunM2xOiLySbbUBidRBQPny_XpTcu:1wp70s:M6hXS7zX1KsH8w-E7MfDibNgn8MTnWokFOBZB4IP-zQ",
+    "expire_date": "2026-08-12T16:20:10.609Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ve7mbvf0vhqc995ejk0t7casrk27jy4v",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYqakNQuS_Y9Q2XHDi2gROpnhbg7VOoCtm9m3ssMtK3jsC06D5OYi4nm9LsxpYeWHcidyq3aVMs6T2x3xR50sX0VfV4P9-9gpGX81uQkQWxVCFtsggvZM-fgctCABAikmdEjJ--5S6E5S0Rw0oFClyma9wf4zThK:1loYfI:Y_g4HKpnEVkKtCMJLkrhRgFZjGwB0z6tjFkKel5882s",
+    "expire_date": "2021-06-16T21:44:40.565Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vxlmi1cyeur4ghy8ye1ln4lfwfbhnjb0",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSG8mXHp3m8gwIBUDU1KuzL-uzbpQrf3nHNfLMRtbWEbZQkTsTMDdvrdUsyP0ndA99hvM89zX5cp8V3hBx38OlN5Xg7376DF0b61cQjeRYkknEBpMxVXhcJkbVU2V00GqtHo0VYZQYCjhFolCR6sVo69P8IoNq8:1lvEME:LN73SM4lQVxo-JUTzoS51SNOm5VF5_LaWH4-hmSL46g",
+    "expire_date": "2021-07-05T07:28:34.816Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xe0zixf3sc9hb3zyd6ih8yd06j46xd9r",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyEspQIevfsNZNkFqRpISnsy_rtt0oNe5jDvzbxFwHUpYe1pDhOLiwAtTr9lRHqmuhN-YL03Sa0u8xTlrsiDdnlrnF7Xw_07KNjLtiZwQJZxVEgIhrcAQ8pz9JnOmhNY5cZsvU7AWSU76MgmR0XWDHFw4vMFJBw4qw:1oHhU1:E5IVUi5P5LfDxsw6-U3-fKmL34CLunLzEiUqJzwZMxo",
+    "expire_date": "2022-08-13T08:06:01.973Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xin7wkjkyqyhk1i3qsn1c8px9to7lwwy",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAOBUZcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERAOL0O8aQHlx3QvdQb02mVtdljnJX5EG7nBrx83q4fwcl9PKtrSZgUkSsI5hoEXPEOJxRW5eUC8GyNsgGjTJA4wAADFmpMaeUswPx_gAL2DgC:1ojvm9:KprwbHYoLGtzswHpUNErIpXwIBTTRcX_p2Suknj1aFY",
+    "expire_date": "2022-10-30T05:01:25.197Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zviglfuy17zrb39g8i9s9brfmld027iu",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP-yZ0OKgAs9evcNhGW3UjWQlPZk_Ltp0oNeZybzhpi2tcStyxJnhhE0wukXUspPqbvhR6r3pnKr6zKT2hN12K5ujeV1Pdq_QUm9wAhGQsDMwkyJyDkk0lPIXthoIhYcEK1Huugps0Wyzlh7zs4G54cUNHy-Q1w4qA:1woy85:W9e3KngM0AZnub9stA6sDwzeBudtD-SEzoFnY7GWUjY",
+    "expire_date": "2026-08-12T06:51:01.376Z"
+  }
+},
+{
+  "model": "app.account",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qG2BZpKd3MP9aqjScs3qfJ$02a/z0YmBr9d3TiBnC0bLdOKMF5hL2INzPfS+4oVqZ8=",
+    "first_name": "Umanga",
+    "last_name": "Gurung",
+    "username": "umangagurung908",
+    "email": "umangagurung908@gmail.com",
+    "phone_number": "9827188175",
+    "date_joined": "2026-07-09T16:34:31.824Z",
+    "last_login": "2026-07-30T02:27:55.983Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_staff": false,
+    "is_superadmin": false,
+    "is_delivery_person": false
+  }
+},
+{
+  "model": "app.account",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$sEB9CrLQTEFwHSctW1SoCB$UCRN5sCWwODVyzKNq0JdB0JKRZa9ex/JyefxZEb8qwk=",
+    "first_name": "Admin",
+    "last_name": "Admin",
+    "username": "Admin",
+    "email": "admin@app.com",
+    "phone_number": "",
+    "date_joined": "2026-07-09T17:41:00.425Z",
+    "last_login": "2026-07-30T02:35:04.166Z",
+    "is_admin": true,
+    "is_active": true,
+    "is_staff": true,
+    "is_superadmin": true,
+    "is_delivery_person": false
+  }
+},
+{
+  "model": "app.account",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$GZrKhJdUTcvVuCHy8a4A7g$vEyPScvOxOnfN6+J0Bd1+575HYsQoQw5yUe2kkLhn0k=",
+    "first_name": "Delivery",
+    "last_name": "Person1",
+    "username": "ronaldodon908",
+    "email": "ronaldodon908@gmail.com",
+    "phone_number": "9824343553",
+    "date_joined": "2026-07-28T17:47:48.040Z",
+    "last_login": "2026-07-29T16:20:10.604Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_staff": false,
+    "is_superadmin": false,
+    "is_delivery_person": true
+  }
+},
+{
+  "model": "app.account",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$6SqNV4GZLbTPnWWlDSMXf3$3K98VDFP43lGOotTQ7uau39oTBi4EoUuecBhbUXPdaw=",
+    "first_name": "Kiran",
+    "last_name": "Subedi",
+    "username": "subedikiran577",
+    "email": "subedikiran577@gmail.com",
+    "phone_number": "9812345543",
+    "date_joined": "2026-07-29T08:17:56.917Z",
+    "last_login": "2026-07-29T08:18:39.712Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_staff": false,
+    "is_superadmin": false,
+    "is_delivery_person": false
+  }
+},
+{
+  "model": "app.userprofile",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "umangagurung908@gmail.com"
+    ],
+    "address_line_1": "Rambazar",
+    "address_line_2": "Near SOS School",
+    "profile_pic": "default/default-user.png",
+    "city": "Pokhara"
+  }
+},
+{
+  "model": "app.userprofile",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "ronaldodon908@gmail.com"
+    ],
+    "address_line_1": "",
+    "address_line_2": "",
+    "profile_pic": "default/default-user.png",
+    "city": ""
+  }
+},
+{
+  "model": "app.userprofile",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "subedikiran577@gmail.com"
+    ],
+    "address_line_1": "Bindabashini",
+    "address_line_2": "Adhikari Marga",
+    "profile_pic": "default/default-user.png",
+    "city": "Pokhara"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 25,
+  "fields": {
+    "category_name": "Bread & bread spreads",
+    "slug": "bread-bread-spreads",
+    "icon": "ci-bread"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 26,
+  "fields": {
+    "category_name": "Dried Goods",
+    "slug": "dried-goods",
+    "icon": "ci-canned-food"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 27,
+  "fields": {
+    "category_name": "Snacks",
+    "slug": "snacks",
+    "icon": "ci-juice"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 29,
+  "fields": {
+    "category_name": "Frozen",
+    "slug": "frozen",
+    "icon": "ci-fish"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 30,
+  "fields": {
+    "category_name": "Vegetables and fruit",
+    "slug": "vegetables-and-fruit",
+    "icon": "ci-apple"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 31,
+  "fields": {
+    "category_name": "Care Products",
+    "slug": "care-products",
+    "icon": "ci-pot"
+  }
+},
+{
+  "model": "category.category",
+  "pk": 32,
+  "fields": {
+    "category_name": "Dairy",
+    "slug": "dairy",
+    "icon": "ci-cheese"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 93,
+  "fields": {
+    "product_name": "CRUMBS SMALL BROWN BREAD 275GM",
+    "slug": "crumbs-small-brown-bread-275gm",
+    "description": "",
+    "price": 65,
+    "image": "products/photos/CRUMBS_SMALL_BROWN_BREAD_275GM.png",
+    "is_available": true,
+    "category": 25,
+    "created_date": "2026-07-29T16:44:01.090Z",
+    "modified_date": "2026-07-29T16:44:01.090Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 94,
+  "fields": {
+    "product_name": "CRUMBS SMALL MULTI GRAIN BREAD 300GM",
+    "slug": "crumbs-small-multi-grain-bread-300gm",
+    "description": "",
+    "price": 85,
+    "image": "products/photos/CRUMBS_SMALL_MULTI_GRAIN_BREAD_300GM.png",
+    "is_available": true,
+    "category": 25,
+    "created_date": "2026-07-29T16:44:37.901Z",
+    "modified_date": "2026-07-29T16:44:37.901Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 95,
+  "fields": {
+    "product_name": "DLITE DRIED CRANBERRY 150G",
+    "slug": "dlite-dried-cranberry-150g",
+    "description": "",
+    "price": 450,
+    "image": "products/photos/DLITE_DRIED_CRANBERRY_150G.png",
+    "is_available": true,
+    "category": 26,
+    "created_date": "2026-07-29T17:10:12.139Z",
+    "modified_date": "2026-07-29T17:10:12.139Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 96,
+  "fields": {
+    "product_name": "DRIED FRUITS KIWI 125G",
+    "slug": "dried-fruits-kiwi-125g",
+    "description": "",
+    "price": 250,
+    "image": "products/photos/DLITE_DRIED_FRUITS_KIWI_125G.png",
+    "is_available": true,
+    "category": 26,
+    "created_date": "2026-07-29T17:11:04.451Z",
+    "modified_date": "2026-07-29T17:11:04.451Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 97,
+  "fields": {
+    "product_name": "DRIED FRUITS MANGO 125G",
+    "slug": "dried-fruits-mango-125g",
+    "description": "",
+    "price": 200,
+    "image": "products/photos/DLITE_DRIED_FRUITS_MANGO125G.png",
+    "is_available": true,
+    "category": 26,
+    "created_date": "2026-07-29T17:11:33.294Z",
+    "modified_date": "2026-07-29T17:11:33.294Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 98,
+  "fields": {
+    "product_name": "DAAMI SUGARFREE MILLET BISCUIT (PACK OF 12) 600G",
+    "slug": "daami-sugarfree-millet-biscuit-pack-of-12-600g",
+    "description": "",
+    "price": 360,
+    "image": "products/photos/DAAMI_SUGARFREE_MILLET_BISCUIT_PACK_OF_12_600G.png",
+    "is_available": true,
+    "category": 27,
+    "created_date": "2026-07-30T02:36:17.494Z",
+    "modified_date": "2026-07-30T02:36:17.494Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 99,
+  "fields": {
+    "product_name": "LAYS MASALA MAGIC 74G",
+    "slug": "lays-masala-magic-74g",
+    "description": "",
+    "price": 80,
+    "image": "products/photos/LAYS_MASALA_MAGIC_74G.png",
+    "is_available": true,
+    "category": 27,
+    "created_date": "2026-07-30T02:37:24.537Z",
+    "modified_date": "2026-07-30T02:37:24.537Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 100,
+  "fields": {
+    "product_name": "LAYS SPANISH TOMATO TANGO 41G",
+    "slug": "lays-spanish-tomato-tango-41g",
+    "description": "",
+    "price": 50,
+    "image": "products/photos/LAYS_SPANISH_TOMATO_TANGO_41G.png",
+    "is_available": true,
+    "category": 27,
+    "created_date": "2026-07-30T02:38:00.543Z",
+    "modified_date": "2026-07-30T02:38:00.543Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 101,
+  "fields": {
+    "product_name": "SAJINA MASALA POTATO CHIPS 130G",
+    "slug": "sajina-masala-potato-chips-130g",
+    "description": "",
+    "price": 135,
+    "image": "products/photos/SAJINA_MASALA_POTATO_CHIPS_130G.png",
+    "is_available": true,
+    "category": 27,
+    "created_date": "2026-07-30T02:39:08.347Z",
+    "modified_date": "2026-07-30T02:39:08.347Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 102,
+  "fields": {
+    "product_name": "Piano Piano Pork Momo 20 Pcs",
+    "slug": "piano-piano-pork-momo-20-pcs",
+    "description": "",
+    "price": 350,
+    "image": "products/photos/Piano_Piano_Pork_Momo_20_Pcs.png",
+    "is_available": true,
+    "category": 29,
+    "created_date": "2026-07-30T03:12:13.566Z",
+    "modified_date": "2026-07-30T03:12:13.566Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 103,
+  "fields": {
+    "product_name": "Piano Piano Chicken Momo 20 Pcs",
+    "slug": "piano-piano-chicken-momo-20-pcs",
+    "description": "",
+    "price": 250,
+    "image": "products/photos/Piano_Piano_Pork_Momo_20_Pcs_ZW6i0jO.png",
+    "is_available": true,
+    "category": 29,
+    "created_date": "2026-07-30T03:15:18.294Z",
+    "modified_date": "2026-07-30T03:15:18.294Z"
+  }
+},
+{
+  "model": "orders.payment",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "umangagurung908@gmail.com"
+    ],
+    "payment_id": "000G6IW",
+    "payment_method": "Esewa",
+    "amount_paid": "213.0",
+    "status": "COMPLETE",
+    "created_at": "2026-07-11T08:44:18.568Z"
+  }
+},
+{
+  "model": "orders.payment",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "umangagurung908@gmail.com"
+    ],
+    "payment_id": "000GB3U",
+    "payment_method": "Esewa",
+    "amount_paid": "2380.0",
+    "status": "COMPLETE",
+    "created_at": "2026-07-28T13:06:48.891Z"
+  }
+},
+{
+  "model": "orders.payment",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "subedikiran577@gmail.com"
+    ],
+    "payment_id": "000GB8I",
+    "payment_method": "Esewa",
+    "amount_paid": "683.0",
+    "status": "COMPLETE",
+    "created_at": "2026-07-29T08:20:41.780Z"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 83,
+  "fields": {
+    "user": [
+      "umangagurung908@gmail.com"
+    ],
+    "payment": 1,
+    "order_number": "2026071183-43f87d",
+    "first_name": "Umanga",
+    "last_name": "Gurung",
+    "phone_number": "9827188175",
+    "email": "umangagurung908@gmail.com",
+    "address_line_1": "Rambazar",
+    "address_line_2": "Near SOS School",
+    "city": "Pokhara",
+    "order_note": "",
+    "order_total": "213",
+    "status": "Completed",
+    "ip": "127.0.0.1",
+    "is_ordered": true,
+    "created_at": "2026-07-11T08:43:05.867Z",
+    "update_at": "2026-07-29T13:50:30.953Z",
+    "delivery_person": [
+      "ronaldodon908@gmail.com"
+    ],
+    "delivery_status": "Completed",
+    "delivery_otp": null,
+    "otp_created_at": null
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 84,
+  "fields": {
+    "user": [
+      "umangagurung908@gmail.com"
+    ],
+    "payment": 2,
+    "order_number": "2026072884-fa0766",
+    "first_name": "Umanga",
+    "last_name": "Gurung",
+    "phone_number": "9827188175",
+    "email": "umangagurung908@gmail.com",
+    "address_line_1": "Rambazar",
+    "address_line_2": "Near SOS School",
+    "city": "Pokhara",
+    "order_note": "",
+    "order_total": "2380",
+    "status": "Completed",
+    "ip": "127.0.0.1",
+    "is_ordered": true,
+    "created_at": "2026-07-28T13:05:26.134Z",
+    "update_at": "2026-07-28T18:07:00.321Z",
+    "delivery_person": [
+      "ronaldodon908@gmail.com"
+    ],
+    "delivery_status": "Completed",
+    "delivery_otp": null,
+    "otp_created_at": null
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 156,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "72",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 157,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "71",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 158,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "70",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 159,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "69",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 160,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "68",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 161,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "67",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 162,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "66",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 163,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "65",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 164,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "64",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 165,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "63",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 166,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "62",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 167,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "61",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 168,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "60",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 169,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "59",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 170,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.513Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "58",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 171,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "57",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 172,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "56",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 173,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "55",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 174,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "54",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 175,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "53",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 176,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "52",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 177,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "51",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 178,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "50",
+    "object_repr": "asd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 179,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "49",
+    "object_repr": "new ",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 180,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "48",
+    "object_repr": "as",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 181,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "47",
+    "object_repr": "as",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 182,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "46",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 183,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "45",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 184,
+  "fields": {
+    "action_time": "2026-07-10T16:01:39.514Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "44",
+    "object_repr": "Suraj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 185,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "9",
+    "object_repr": "9vuteqviq8fn2qaxp6qx57d27jgbbfdg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 186,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "8",
+    "object_repr": "ogwqbh4o09a7tew6v276fl640wlaxqc0",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 187,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "7",
+    "object_repr": "25a5gjk4gfe222iklufaqbia982wmra3",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 188,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "6",
+    "object_repr": "na00rabogu6gcj1y6jh46dqn1kgda9du",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 189,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "5",
+    "object_repr": "j4urwz7vt1w3jad100iswg3lkdlf0j9t",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 190,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "4",
+    "object_repr": "us3edwlfbir9749c4tz789040ra3vjwr",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 191,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "3",
+    "object_repr": "4jzgrpgx877vy9nsav7fczu8gm3udhgp",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 192,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "2",
+    "object_repr": "kkuswip84irdbkv48pdvh4noxslmkvw9",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 193,
+  "fields": {
+    "action_time": "2026-07-10T16:02:08.079Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "1",
+    "object_repr": "fmgaehjkpqb8uyvkdww48racvcgvfwoz",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 194,
+  "fields": {
+    "action_time": "2026-07-10T16:02:18.166Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cartitem"
+    ],
+    "object_id": "74",
+    "object_repr": "Millets varieties & oats - 1/2 kg each",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 195,
+  "fields": {
+    "action_time": "2026-07-10T16:02:18.166Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cartitem"
+    ],
+    "object_id": "66",
+    "object_repr": "Instant rice sevai -1 big packet",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 196,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "11",
+    "object_repr": "2000@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 197,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "15",
+    "object_repr": "admin@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 198,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "9",
+    "object_repr": "mac@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 199,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "10",
+    "object_repr": "pythonmacaulay@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 200,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "14",
+    "object_repr": "s@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 201,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "13",
+    "object_repr": "a@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 202,
+  "fields": {
+    "action_time": "2026-07-10T16:02:48.561Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "12",
+    "object_repr": "suraj1@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 203,
+  "fields": {
+    "action_time": "2026-07-10T17:06:06.413Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "76",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 204,
+  "fields": {
+    "action_time": "2026-07-10T17:06:06.413Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "75",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 205,
+  "fields": {
+    "action_time": "2026-07-10T17:06:18.924Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "74",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 206,
+  "fields": {
+    "action_time": "2026-07-10T17:06:18.924Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "73",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 207,
+  "fields": {
+    "action_time": "2026-07-28T17:49:36.271Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "18",
+    "object_repr": "ronaldodon908@gmail.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is delivery person\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 208,
+  "fields": {
+    "action_time": "2026-07-28T17:51:40.155Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "84",
+    "object_repr": "Umanga",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Delivery person\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 209,
+  "fields": {
+    "action_time": "2026-07-29T06:51:01.360Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "18",
+    "object_repr": "ronaldodon908@gmail.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 210,
+  "fields": {
+    "action_time": "2026-07-29T06:51:05.402Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "18",
+    "object_repr": "ronaldodon908@gmail.com",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 211,
+  "fields": {
+    "action_time": "2026-07-29T08:17:11.622Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "app",
+      "account"
+    ],
+    "object_id": "19",
+    "object_repr": "subedikiran577@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 212,
+  "fields": {
+    "action_time": "2026-07-29T08:21:29.217Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "85",
+    "object_repr": "Kiran",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Delivery person\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 213,
+  "fields": {
+    "action_time": "2026-07-29T13:23:43.845Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "cart",
+      "cart"
+    ],
+    "object_id": "10",
+    "object_repr": "58kbplan4nic6euioshij0u2bbih6vqk",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 214,
+  "fields": {
+    "action_time": "2026-07-29T13:46:53.687Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "82",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 215,
+  "fields": {
+    "action_time": "2026-07-29T13:46:53.687Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "81",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 216,
+  "fields": {
+    "action_time": "2026-07-29T13:46:53.687Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "80",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 217,
+  "fields": {
+    "action_time": "2026-07-29T13:46:53.687Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "79",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 218,
+  "fields": {
+    "action_time": "2026-07-29T13:46:53.687Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "78",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 219,
+  "fields": {
+    "action_time": "2026-07-29T13:46:53.687Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "77",
+    "object_repr": "Umanga",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 220,
+  "fields": {
+    "action_time": "2026-07-29T13:48:19.281Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "83",
+    "object_repr": "Umanga",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Delivery person\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 221,
+  "fields": {
+    "action_time": "2026-07-29T15:22:22.396Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "category",
+      "category"
+    ],
+    "object_id": "28",
+    "object_repr": "Ice Cream",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 222,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "92",
+    "object_repr": "Wheat flour - 2 kgs (North Indians, please increase atta to 5 kgs and reduce rice)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 223,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "91",
+    "object_repr": "Sago/Javvarisi - 1/2 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 224,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "90",
+    "object_repr": "Instant rice sevai -1 big packet",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 225,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "89",
+    "object_repr": "Rice rava - 500 gms",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 226,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "88",
+    "object_repr": "Sugar - 1 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 227,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "86",
+    "object_repr": "Dosa rice ( optional) - 2 kgs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 228,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "85",
+    "object_repr": "Jaggery - 1/2 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 229,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "84",
+    "object_repr": "Tamarind - 1/2 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 230,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "83",
+    "object_repr": "Vermicelli / Semiya - 1 packet big",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 231,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "82",
+    "object_repr": "Ragi flour - 1 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 232,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "81",
+    "object_repr": "Bombay Rava/ Semolina or Chiroti rava - 1 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 233,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "80",
+    "object_repr": "Turmeric powder - 100 gms",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 234,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "79",
+    "object_repr": "Idli rice/Boiled rice/Salem rice - 5-7 kgs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 235,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "78",
+    "object_repr": "Pressed rice / Poha(thick or thin) -1 kgs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 236,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "77",
+    "object_repr": "Basmati rice - 1 to 2 kgs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 237,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "76",
+    "object_repr": "Maida - 1/2 kg (For cakes and snacks)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 238,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "75",
+    "object_repr": "Rice flour - 1/2 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 239,
+  "fields": {
+    "action_time": "2026-07-29T15:22:42.788Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "store",
+      "product"
+    ],
+    "object_id": "74",
+    "object_repr": "Red chilli - 1/4 kg",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 240,
+  "fields": {
+    "action_time": "2026-07-29T16:27:50.844Z",
+    "user": [
+      "admin@app.com"
+    ],
+    "content_type": [
+      "orders",
+      "order"
+    ],
+    "object_id": "85",
+    "object_repr": "Kiran",
+    "action_flag": 3,
+    "change_message": ""
+  }
+}
+]
