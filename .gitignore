@@ -1,5 +1,33 @@
-__pycache__
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
 
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment Variables & Secret Credentials
 .env
+.env.local
+*.env
 
-venv
+# Database Files
+*.sqlite3
+*.db
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
