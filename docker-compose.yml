@@ -23,6 +23,8 @@ services:
       timeout: 5s
       retries: 5
 
+
+
   web:
     build: .
     container_name: gurungstore_web_container

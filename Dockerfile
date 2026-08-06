@@ -1,11 +1,8 @@
-# Use an official lightweight Python image
 FROM python:3.11-slim
 
-# Prevent Python from writing .pyc files & enable unbuffered stdout/stderr logging
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Set working directory inside the container
 WORKDIR /app
 
 # Install system build dependencies for PostgreSQL and image handling
